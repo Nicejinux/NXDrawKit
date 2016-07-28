@@ -5,6 +5,8 @@
 
 
 
+[![Build Status](https://travis-ci.org/Nicejinux/NXDrawKit.svg?branch=master)](https://travis-ci.org/Nicejinux/NXDrawKit)
+
 #Purpose
 It's just started for my personal app for iPhone.
 Though, it can not be customized as much as you want, you can use [Smooth Freehand Drawing View](http://code.tutsplus.com/tutorials/ios-sdk_freehand-drawing--mobile-13164) easily.
@@ -47,11 +49,11 @@ github "nicejinux/NXDrawKit"
 
 ```swift
 // optional
-canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
-canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
 
 // required
-currentBrush() -> Brush?
+func currentBrush() -> Brush?
 ```
 
 ### - Model
@@ -79,9 +81,9 @@ public class Brush: NSObject {
 
 
 ### - Public Methods
-User can set background image.
-User can ***undo***, ***redo*** or ***clear*** the `Canvas`. (**Maximum history size is 50**)
-User can ***save*** current stroke and background internally, then `Canvas` calls ***didSavePaper:*** delegate
+ - User can set background image.
+ - User can ***undo***, ***redo*** or ***clear*** the `Canvas`. (**Maximum history size is 50**)
+ - User can ***save*** current stroke and background internally, then `Canvas` calls ***didSavePaper:*** delegate
 
 ```swift
 func update(backgroundImage: UIImage?)
@@ -92,39 +94,39 @@ func save()
 ```
 
 ##Palette 
-`Palette` has 12 buttons for color, 3 buttons for alpha and 4 buttons for width of brush.
-**You can** customize color, value of alpha and width of brush with delegate, 
-**You can't** customize number of buttons.
+ - `Palette` has 12 buttons for color, 3 buttons for alpha and 4 buttons for width of brush.
+ - **You can** customize color, value of alpha and width of brush with delegate, 
+ - **You can't** customize number of buttons.
 
 ### - Delegate
-`Palette` will call the delegate when user clicks the color, alpha or width button.
-You can customize the color, alpha or width with delegate. (**all delegates are optional**)
+ - `Palette` will call the delegate when user clicks the color, alpha or width button.
+ - You can customize the color, alpha or width with delegate. (**all delegates are optional**)
 
 ```swift
-didChangeBrushColor(color: UIColor)
-didChangeBrushAlpha(alpha: CGFloat)
-didChangeBrushWidth(width: CGFloat)
+func didChangeBrushColor(color: UIColor)
+func didChangeBrushAlpha(alpha: CGFloat)
+func didChangeBrushWidth(width: CGFloat)
 ```
 
-***tag*** can be ***1 ... 12*** 
-If you return ***nil***, the color of tag will set with default color provided by **NXDrawKit**.
+ - ***tag*** can be ***1 ... 12*** 
+ - If you return ***nil***, the color of tag will set with default color provided by **NXDrawKit**.
 
 ```swift
-colorWithTag(tag: NSInteger) -> UIColor?
+func colorWithTag(tag: NSInteger) -> UIColor?
 ```
 
-***tag*** can be ***1 ... 3***
-If you return ***-1***, the alpha of tag will set with default alpha provided by **NXDrawKit**.
+ - ***tag*** can be ***1 ... 3***
+ - If you return ***-1***, the alpha of tag will set with default alpha provided by **NXDrawKit**.
 
 ```swift
-alphaWithTag(tag: NSInteger) -> CGFloat
+func alphaWithTag(tag: NSInteger) -> CGFloat
 ```
 
-***tag*** can be ***1 ... 4***
-If you return ***-1***, the width of tag will set with default width provided by **NXDrawKit**.
+ - ***tag*** can be ***1 ... 4***
+ - If you return ***-1***, the width of tag will set with default width provided by **NXDrawKit**.
 
 ```swift
-widthWithTag(tag: NSInteger) -> CGFloat
+func widthWithTag(tag: NSInteger) -> CGFloat
 
 ```
 
@@ -137,14 +139,14 @@ func currentBrush() -> Brush
 
 ##ToolBar
 ### - Public Properties
-All buttons are set with default values without **#selector**.
-If you want to use buttons on the `ToolBar`, you have to add **#selector** for each buttons.
+ - All buttons are set with default values without **#selector**.
+ - If you want to use buttons on the `ToolBar`, you have to add **#selector** for each buttons.
 ```swift
-public weak var undoButton: UIButton?
-public weak var redoButton: UIButton?
-public weak var saveButton: UIButton?
-public weak var loadButton: UIButton?
-public weak var clearButton: UIButton?
+var undoButton: UIButton?
+var redoButton: UIButton?
+var saveButton: UIButton?
+var loadButton: UIButton?
+var clearButton: UIButton?
 ```
 
 
@@ -155,6 +157,7 @@ public weak var clearButton: UIButton?
 4. All the codes looks like ***ObjC***.
 
 
+
 #Author
 This is [Jinwook Jeon](http://Nicejinux.NET). 
 I've been working as an iOS developer in Korea. 
@@ -162,9 +165,9 @@ This is my first Swift project, so there can be lots of weird things in this fra
 I'm waiting for your comments, suggestions, fixes, everything what you want to say.
 Feel free to contact me.
 
-email : nicejinux@gmail.com
-facebook : http://facebook.com/Nicejinux
-homepage : http://Nicejinux.NET
+ - email : nicejinux@gmail.com
+ - facebook : http://facebook.com/Nicejinux
+ - homepage : http://Nicejinux.NET
 
 
 #MIT License
