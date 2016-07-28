@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  NXDrawKit: 55f4306480f2c02eaa3c6f8987e7ec2a281cdff0
+  NXDrawKit: b6e3c14535b2e528ca37ea2e3ca774ddd3368910
   RSKImageCropper: edd65fedb3734332818deb139906d6b7f54b8a44
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
 

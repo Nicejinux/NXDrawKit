@@ -8,40 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		07960DE21E9AB0F2F0E41C1A30F2E43B /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F558F6739401D810994998C31367B3 /* RSKTouchView.m */; };
-		10DBC4C700E54924EFC586FDE9FBD38C /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC83300DBED2397B7AA744504D78D02 /* icon_camera@2x.png */; };
 		1619C1D5863883B817380D519133334D /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB01B1F447A6874BEE741F11132F3412 /* SnapKit-dummy.m */; };
 		177DBF4CBD7831501E26BFD087EC7CF1 /* RSKImageScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA40076FC91585B542BFAD21787961A9 /* RSKImageScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		185A0BB554673ED9A471B91C153BB41C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C7025EB31AED9508B561ADFED980ED /* Foundation.framework */; };
-		1DF226834148988AF9F87285BEFB5B8E /* icon_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 069EE2002823B01587ABA35B879E09D1 /* icon_camera.png */; };
 		25DE54DCC6E87742AB062BC1F2D25EE1 /* NXDrawKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4EAEA497CA4360310AE686C1CDACD1 /* NXDrawKit-dummy.m */; };
-		2B5C00080DAE3808822E34A0CE9702FA /* icon_redo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F9D673F38702DB9BA826EA464C5E719 /* icon_redo@3x.png */; };
+		29FC3B0E3830FF60BEE5E24A5FB9234A /* icon_undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E98B2A961DF5E534BDF49565742050D /* icon_undo.png */; };
+		2AB0301808EC85C8F883C93318469A70 /* icon_redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C9E09B4AA2758761908B902DE82AF /* icon_redo@2x.png */; };
 		389E085E3A73714DFCEFBE531DC6F7C3 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28FFDA9CAB836B53CEA6912FC1748A7B /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39542A335F8B85EB06787478E92064B7 /* RSKTouchView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE37D9F2C954304E0B3AAE76804DFFE /* RSKTouchView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41D701F9CB8D6D157BB938BFE9AEC8B8 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9138D3AF94FAF52D3CB460895554ED8 /* Palette.swift */; };
 		41F87E842AB859DCFA68CA0ED74D7A18 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AE2551D556FE773FCC732427F031F /* ToolBar.swift */; };
-		42F708D14F0E54519629E8CA01385549 /* icon_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3057ACC695970F6D2E15C9D8B45911E8 /* icon_camera@3x.png */; };
 		4497FA6594F5B2138268E1AB0CCF6516 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF448B4C77C4F54CA8D09DF10342FE /* CircleButton.swift */; };
 		4512989A189E0D0E724E11255860621B /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC0CDD293D9B4F9B4CB30D23D696B83 /* UIImage+RSKImageCropper.m */; };
-		485CC76A71F2FC942B1985C47447EA90 /* icon_undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AF259F8A05A5609F845FB89995585D /* icon_undo@2x.png */; };
-		4EF67C69D855686AE0C8EC55A4E8A72F /* icon_redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E77A4A798F1B6ED550144EECF302AAB /* icon_redo@2x.png */; };
+		47E198AFBF03551C3C3838DD278F7208 /* icon_redo.png in Resources */ = {isa = PBXBuildFile; fileRef = E296BF0FDD3291B99524475028F4BA9F /* icon_redo.png */; };
 		54616C1E57E379E9C92B04A050874876 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC434D37326C4766E567D3F075064D18 /* ConstraintItem.swift */; };
 		5470E521E81F686A95BE8A3FDBD89E93 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE47F248C45529CD70A5F26BC061F5F /* Session.swift */; };
+		59172FB451A9DDEDFEF3CB15ABC73512 /* icon_undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113D1AB9803BF90AEE61E74B7D1B8430 /* icon_undo@2x.png */; };
 		5C76201D4E1446C4BDDD261BF829C2FA /* UIImage+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = 748B198CBB689E1B8562EA7EFE933709 /* UIImage+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E60D65DCA699EFB875CFD734FFF99A8 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C7EB8C0A4FF4085B7862B0217D5032 /* Paper.swift */; };
 		62DB7B067A86CD128EA8FDB3D91A71A5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191AF6D3DDC36230E7F6E1EF38712D35 /* SnapKit.framework */; };
 		6386094D1BE46AAE1739F53209081476 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFE137D5E98F63FA523456BA3D24E69 /* CGGeometry+RSKImageCropper.m */; };
-		64E6DEC4E0FE22CDA7CFBABC74930229 /* icon_redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 75F98619A1D8C9B0ADF6F5F16F4ECCF8 /* icon_redo.png */; };
+		64D5567DC2BDFEEB3A3744F642993076 /* icon_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */; };
 		677FBFB5F8C3463099C9050F058E00EF /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 080E081FEDFFCDD1AD27C020E11B8ADF /* UIApplication+RSKImageCropper.m */; };
 		6C21DCA2FD46656A90B7523B1FDD5196 /* Pods-NXDrawKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C408EEB5678B0F9375A3C35F4AF4406 /* Pods-NXDrawKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C46D8C4D193C52151606EEB4C59FA0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C7025EB31AED9508B561ADFED980ED /* Foundation.framework */; };
+		6CA06CDAE7E5898A6A5C3D3ACA1B79C9 /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41CF654B06DBDFC891F6068597F85806 /* icon_camera@2x.png */; };
 		6F176501168DE0D0977EF83689894E18 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC852B3D88B5F90CE113D28EE10CB1A6 /* EdgeInsets.swift */; };
 		70E4569105302CFDEF0D7F55B68EF694 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09F1A27CC25B3690A0F02062945BDFA /* UIKit.framework */; };
-		782A9E7FA823F0A1D4E402D1834E25E0 /* icon_undo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 012116E6F187E604741D21C88649A855 /* icon_undo@3x.png */; };
 		82F1DBF1158F086CBD64D8D1D5BA8A2C /* NXDrawKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93F11C2F18507944BAAAEE4349B0AC81 /* NXDrawKit.bundle */; };
 		836B05A175CFB69A39E52AC9D48A3BF8 /* RSKImageCropper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0928E74E5B6A17AC046AC186EBCAF4 /* RSKImageCropper-dummy.m */; };
+		85CA061D5551284F6327CC68DA1F77ED /* icon_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */; };
 		86A9C630CFA5BD6DD5EE809774FB64C5 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763E63D6CE69FA33386EFFDBC7E3917 /* ViewController+SnapKit.swift */; };
 		8B07302A9A47A50B763E222B801380D7 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E6968F0387E219054F1B40C890194 /* Constraint.swift */; };
-		9488EB105C06F05668ED4D5068128417 /* icon_undo.png in Resources */ = {isa = PBXBuildFile; fileRef = C43A76F24FB292394DE5B2D236282EAE /* icon_undo.png */; };
 		A18223500959D0A8931D82C75F1B0710 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A062C10F324E8F14D240B445C4A725E /* Debugging.swift */; };
 		A514317CCD220795FE99E155A746CB79 /* RSKImageCropperStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BECFFD062601874F109B7400B5491C2 /* RSKImageCropperStrings.bundle */; };
 		A52CB49D00B376D6E04D7151A5763984 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DF9044F3CECD78FDB119C4F9F9876B /* RSKImageScrollView.m */; };
@@ -52,10 +50,12 @@
 		B7F1BEF704B65DF01144C2819F8813C9 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE4A56696F6442EE417CD62C8C97D55 /* ConstraintAttributes.swift */; };
 		BAB04EBE50A4B1492A29F27126834E89 /* RSKInternalUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 064099B66437B9D7FA35E10DC6DC2F20 /* RSKInternalUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB9844DEA82CE8FE8586F2996DDF1A61 /* UIApplication+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = C2321E4B0FBD40E48DCF74E7A2ACA1AE /* UIApplication+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC23F201C028EDE25556E47AF2E01113 /* icon_redo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2D68CFF54DA4072576517827F6C3F /* icon_redo@3x.png */; };
 		BCAD7EE93ECCA0E3BF8F73BC728BCEBE /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C40016400540BD31A46B23821DCD987 /* SnapKit.swift */; };
 		BCDF484762F111FACEA1AA28F841A9EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C7025EB31AED9508B561ADFED980ED /* Foundation.framework */; };
 		BE8FD3CE373B9262C989023299F3A67C /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8FAEA5D97D5160BBF8F35E813D3049 /* RSKImageCropViewController.m */; };
 		C3498CA442ADC82A65BC037916D9D36E /* RSKImageCropViewController+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 188393DAB70EE062D3BB1FE027EBBE93 /* RSKImageCropViewController+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C74CDF5D1D1B088A74BFEC8B133B526F /* icon_undo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C086698BC3ED1D601EE0FDC49E8852D /* icon_undo@3x.png */; };
 		CEF7EE8B44C39D16577DEDBC07FE7A8F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F62BA875ED6329F4FC0B27F7A4274BB /* Canvas.swift */; };
 		E92606E871AAEAC35421357CD0C054D8 /* Pods-NXDrawKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C2D3F01670BDD80A830264D58FCFE5B /* Pods-NXDrawKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE3B9AFB1ED089F89F49832D478F0A95 /* RSKImageCropViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30E0A7E4A88FF2C9BA6DC2BB71253126 /* RSKImageCropViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -112,19 +112,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		012116E6F187E604741D21C88649A855 /* icon_undo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@3x.png"; sourceTree = "<group>"; };
 		026BC0897491307C79970BF69B3D0CF1 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		028AC85DDEF91F295708B4C47BF54E8A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03AF448B4C77C4F54CA8D09DF10342FE /* CircleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		04624B598009CCB57EF1AE1377B4CD7B /* Pods-NXDrawKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NXDrawKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		064099B66437B9D7FA35E10DC6DC2F20 /* RSKInternalUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKInternalUtility.h; path = RSKImageCropper/RSKInternalUtility.h; sourceTree = "<group>"; };
-		069EE2002823B01587ABA35B879E09D1 /* icon_camera.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_camera.png; sourceTree = "<group>"; };
 		080E081FEDFFCDD1AD27C020E11B8ADF /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+RSKImageCropper.m"; path = "RSKImageCropper/UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
 		0BD3EB1ECFAE47C7D19A4EB3D282590F /* RSKInternalUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKInternalUtility.m; path = RSKImageCropper/RSKInternalUtility.m; sourceTree = "<group>"; };
 		0C2D3F01670BDD80A830264D58FCFE5B /* Pods-NXDrawKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NXDrawKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		0D4EAEA497CA4360310AE686C1CDACD1 /* NXDrawKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NXDrawKit-dummy.m"; sourceTree = "<group>"; };
+		0F4C9E09B4AA2758761908B902DE82AF /* icon_redo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_redo@2x.png"; sourceTree = "<group>"; };
 		0FE4A56696F6442EE417CD62C8C97D55 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
-		10AF259F8A05A5609F845FB89995585D /* icon_undo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@2x.png"; sourceTree = "<group>"; };
+		113D1AB9803BF90AEE61E74B7D1B8430 /* icon_undo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@2x.png"; sourceTree = "<group>"; };
 		188393DAB70EE062D3BB1FE027EBBE93 /* RSKImageCropViewController+Protected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RSKImageCropViewController+Protected.h"; path = "RSKImageCropper/RSKImageCropViewController+Protected.h"; sourceTree = "<group>"; };
 		191AF6D3DDC36230E7F6E1EF38712D35 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC297C6D85459EAE8A367417130BFE8 /* Pods-NXDrawKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NXDrawKit_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -134,12 +133,12 @@
 		2A4C35B30C49DEF2677C2220B5DAC378 /* RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKImageCropper.h; path = RSKImageCropper/RSKImageCropper.h; sourceTree = "<group>"; };
 		2BD6D5B8AE0CA9FDC2FE4A1D358D4BC5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE37D9F2C954304E0B3AAE76804DFFE /* RSKTouchView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKTouchView.h; path = RSKImageCropper/RSKTouchView.h; sourceTree = "<group>"; };
-		3057ACC695970F6D2E15C9D8B45911E8 /* icon_camera@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_camera@3x.png"; sourceTree = "<group>"; };
 		30E0A7E4A88FF2C9BA6DC2BB71253126 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKImageCropViewController.h; path = RSKImageCropper/RSKImageCropViewController.h; sourceTree = "<group>"; };
 		32240906E4BDBEFD26C9423BEC6C9D30 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		37A60CE4B530CFD21C90642EF9FF50C3 /* Pods-NXDrawKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NXDrawKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3BC83300DBED2397B7AA744504D78D02 /* icon_camera@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_camera@2x.png"; sourceTree = "<group>"; };
 		3E2FBD33B6B92FD6126B613625ED17EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		3E98B2A961DF5E534BDF49565742050D /* icon_undo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_undo.png; sourceTree = "<group>"; };
+		41CF654B06DBDFC891F6068597F85806 /* icon_camera@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_camera@2x.png"; sourceTree = "<group>"; };
 		46D50C28CD971D136ABE2E7187B1F81D /* NXDrawKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = NXDrawKit.modulemap; sourceTree = "<group>"; };
 		46DF9044F3CECD78FDB119C4F9F9876B /* RSKImageScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKImageScrollView.m; path = RSKImageCropper/RSKImageScrollView.m; sourceTree = "<group>"; };
 		4763E63D6CE69FA33386EFFDBC7E3917 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ViewController+SnapKit.swift"; path = "Source/ViewController+SnapKit.swift"; sourceTree = "<group>"; };
@@ -149,7 +148,9 @@
 		4C408EEB5678B0F9375A3C35F4AF4406 /* Pods-NXDrawKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NXDrawKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		4C6E49761A4DFBB90E6A18810532EC3C /* Pods-NXDrawKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NXDrawKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		4E8FAEA5D97D5160BBF8F35E813D3049 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKImageCropViewController.m; path = RSKImageCropper/RSKImageCropViewController.m; sourceTree = "<group>"; };
+		4EF2D68CFF54DA4072576517827F6C3F /* icon_redo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_redo@3x.png"; sourceTree = "<group>"; };
 		4FF7C7603FB85F2F1DC6A11C090F4FE4 /* ResourceBundle-NXDrawKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-NXDrawKit-Info.plist"; sourceTree = "<group>"; };
+		5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_camera@3x.png"; sourceTree = "<group>"; };
 		538239432CAEF575A0E8597F122DA3FA /* Pods-NXDrawKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NXDrawKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5509A0C1DA5CD3E5C692FB88CF11955A /* Pods-NXDrawKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NXDrawKit_Example.modulemap"; sourceTree = "<group>"; };
 		556095E7045291112DC2F2EB71DC5FB0 /* RSKImageCropper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RSKImageCropper.modulemap; sourceTree = "<group>"; };
@@ -163,10 +164,11 @@
 		6E0928E74E5B6A17AC046AC186EBCAF4 /* RSKImageCropper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSKImageCropper-dummy.m"; sourceTree = "<group>"; };
 		6F62BA875ED6329F4FC0B27F7A4274BB /* Canvas.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		748B198CBB689E1B8562EA7EFE933709 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+RSKImageCropper.h"; path = "RSKImageCropper/UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
-		75F98619A1D8C9B0ADF6F5F16F4ECCF8 /* icon_redo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_redo.png; sourceTree = "<group>"; };
 		7A6EA2FA84638283D5B9B1F816031681 /* Pods-NXDrawKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NXDrawKit_Tests.modulemap"; sourceTree = "<group>"; };
+		7C086698BC3ED1D601EE0FDC49E8852D /* icon_undo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@3x.png"; sourceTree = "<group>"; };
 		7C40016400540BD31A46B23821DCD987 /* SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnapKit.swift; path = Source/SnapKit.swift; sourceTree = "<group>"; };
 		7DDEBD0DD514BF3E4F1CD7B756E93BEC /* RSKImageCropper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSKImageCropper.xcconfig; sourceTree = "<group>"; };
+		833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_camera.png; sourceTree = "<group>"; };
 		86C7EB8C0A4FF4085B7862B0217D5032 /* Paper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
 		8E1E6968F0387E219054F1B40C890194 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		8FCFA10F72125F8B23691E31395565FA /* Pods-NXDrawKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NXDrawKit_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -174,8 +176,6 @@
 		93D6B5696380923FC78356D9A1F1D570 /* NXDrawKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NXDrawKit.xcconfig; sourceTree = "<group>"; };
 		93F11C2F18507944BAAAEE4349B0AC81 /* NXDrawKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NXDrawKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		99AD446A9BDB15F0B3035CBC2937172E /* Pods-NXDrawKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NXDrawKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9E77A4A798F1B6ED550144EECF302AAB /* icon_redo@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_redo@2x.png"; sourceTree = "<group>"; };
-		9F9D673F38702DB9BA826EA464C5E719 /* icon_redo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_redo@3x.png"; sourceTree = "<group>"; };
 		A714CED5FE4F8DF4FCFB8F4DCB0D4596 /* NXDrawKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NXDrawKit-umbrella.h"; sourceTree = "<group>"; };
 		A9138D3AF94FAF52D3CB460895554ED8 /* Palette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A94ED9E84822CB6E552220940EA6F09F /* Pods-NXDrawKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NXDrawKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,13 +191,13 @@
 		C355CBA4E1CA713F4539404704E46F23 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E07D7C683F41486E61B2B6A11AD734 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		C41F538D2072E8F304978FAE676B8F81 /* Pods_NXDrawKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NXDrawKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C43A76F24FB292394DE5B2D236282EAE /* icon_undo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_undo.png; sourceTree = "<group>"; };
 		CBC0CDD293D9B4F9B4CB30D23D696B83 /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RSKImageCropper.m"; path = "RSKImageCropper/UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
 		D09F1A27CC25B3690A0F02062945BDFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D49DBF565B4AFBCD612E8AD3E92466A6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4D9F09182DEBA484BC9A0C4AF474BB9 /* Pods-NXDrawKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NXDrawKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		DEC52C035C02B7ABB13AF77B1163348F /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		E2274E378DFB89F09B2363149E1BBD4E /* RSKImageCropper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropper-prefix.pch"; sourceTree = "<group>"; };
+		E296BF0FDD3291B99524475028F4BA9F /* icon_redo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_redo.png; sourceTree = "<group>"; };
 		E2A674086B500281A533896810AF79DC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6DE50016869C68A112FCCDA02F1DA0C /* NXDrawKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NXDrawKit-prefix.pch"; sourceTree = "<group>"; };
 		EC434D37326C4766E567D3F075064D18 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
@@ -282,6 +282,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0A294E6B37436EDD5CE667985297D631 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */,
+				41CF654B06DBDFC891F6068597F85806 /* icon_camera@2x.png */,
+				5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */,
+				E296BF0FDD3291B99524475028F4BA9F /* icon_redo.png */,
+				0F4C9E09B4AA2758761908B902DE82AF /* icon_redo@2x.png */,
+				4EF2D68CFF54DA4072576517827F6C3F /* icon_redo@3x.png */,
+				3E98B2A961DF5E534BDF49565742050D /* icon_undo.png */,
+				113D1AB9803BF90AEE61E74B7D1B8430 /* icon_undo@2x.png */,
+				7C086698BC3ED1D601EE0FDC49E8852D /* icon_undo@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		0C37B8CBC36366B513B87472B48A2CC8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,14 +355,6 @@
 				6BECFFD062601874F109B7400B5491C2 /* RSKImageCropperStrings.bundle */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		618C28A938BC14C5D60392CDACDE0002 /* NXDrawKit */ = {
-			isa = PBXGroup;
-			children = (
-				FC0368C5957E9BCDA5AF84BDD9B72837 /* Assets */,
-			);
-			path = NXDrawKit;
 			sourceTree = "<group>";
 		};
 		634E507EC98F5F53F3665D4240B3A16A /* RSKImageCropper */ = {
@@ -415,7 +423,7 @@
 		7F08EEC65C2CA2253DE275F581984824 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				618C28A938BC14C5D60392CDACDE0002 /* NXDrawKit */,
+				D56A14009FDF6FBFAB93A387CCE96C64 /* NXDrawKit */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -491,6 +499,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		D56A14009FDF6FBFAB93A387CCE96C64 /* NXDrawKit */ = {
+			isa = PBXGroup;
+			children = (
+				0A294E6B37436EDD5CE667985297D631 /* Assets */,
+			);
+			path = NXDrawKit;
+			sourceTree = "<group>";
+		};
 		E06E0BD6E4F16856126BC53ECBA5D4E6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,22 +527,6 @@
 				C66A6A3CD70D465B78C69FDD03EFC828 /* Classes */,
 			);
 			path = NXDrawKit;
-			sourceTree = "<group>";
-		};
-		FC0368C5957E9BCDA5AF84BDD9B72837 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				069EE2002823B01587ABA35B879E09D1 /* icon_camera.png */,
-				3BC83300DBED2397B7AA744504D78D02 /* icon_camera@2x.png */,
-				3057ACC695970F6D2E15C9D8B45911E8 /* icon_camera@3x.png */,
-				75F98619A1D8C9B0ADF6F5F16F4ECCF8 /* icon_redo.png */,
-				9E77A4A798F1B6ED550144EECF302AAB /* icon_redo@2x.png */,
-				9F9D673F38702DB9BA826EA464C5E719 /* icon_redo@3x.png */,
-				C43A76F24FB292394DE5B2D236282EAE /* icon_undo.png */,
-				10AF259F8A05A5609F845FB89995585D /* icon_undo@2x.png */,
-				012116E6F187E604741D21C88649A855 /* icon_undo@3x.png */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,7 +681,7 @@
 			buildPhases = (
 				6C26285A791FB4D12159C22A6AF4A841 /* Sources */,
 				A37F51602A1479F565324B933884FB84 /* Frameworks */,
-				42F49C1AF324489420A80BC511D52D42 /* Resources */,
+				599E5E5AE19B9101715DFFBA62DCB0CA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -732,19 +732,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42F49C1AF324489420A80BC511D52D42 /* Resources */ = {
+		599E5E5AE19B9101715DFFBA62DCB0CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF226834148988AF9F87285BEFB5B8E /* icon_camera.png in Resources */,
-				10DBC4C700E54924EFC586FDE9FBD38C /* icon_camera@2x.png in Resources */,
-				42F708D14F0E54519629E8CA01385549 /* icon_camera@3x.png in Resources */,
-				64E6DEC4E0FE22CDA7CFBABC74930229 /* icon_redo.png in Resources */,
-				4EF67C69D855686AE0C8EC55A4E8A72F /* icon_redo@2x.png in Resources */,
-				2B5C00080DAE3808822E34A0CE9702FA /* icon_redo@3x.png in Resources */,
-				9488EB105C06F05668ED4D5068128417 /* icon_undo.png in Resources */,
-				485CC76A71F2FC942B1985C47447EA90 /* icon_undo@2x.png in Resources */,
-				782A9E7FA823F0A1D4E402D1834E25E0 /* icon_undo@3x.png in Resources */,
+				64D5567DC2BDFEEB3A3744F642993076 /* icon_camera.png in Resources */,
+				6CA06CDAE7E5898A6A5C3D3ACA1B79C9 /* icon_camera@2x.png in Resources */,
+				85CA061D5551284F6327CC68DA1F77ED /* icon_camera@3x.png in Resources */,
+				47E198AFBF03551C3C3838DD278F7208 /* icon_redo.png in Resources */,
+				2AB0301808EC85C8F883C93318469A70 /* icon_redo@2x.png in Resources */,
+				BC23F201C028EDE25556E47AF2E01113 /* icon_redo@3x.png in Resources */,
+				29FC3B0E3830FF60BEE5E24A5FB9234A /* icon_undo.png in Resources */,
+				59172FB451A9DDEDFEF3CB15ABC73512 /* icon_undo@2x.png in Resources */,
+				C74CDF5D1D1B088A74BFEC8B133B526F /* icon_undo@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

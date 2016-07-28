@@ -1,8 +1,8 @@
 {
   "name": "NXDrawKit",
   "version": "0.1.0",
-  "summary": "Smooth drawing canvas, palette and toolbar for iPhone",
-  "description": "NXDrawKit is a simple and easy but useful drawing kit for iPhone",
+  "summary": "NXDrawKit is a simple and easy but useful drawing kit for iPhone",
+  "description": "NXDrawKit is a set of classes designed to use drawable view easily.",
   "homepage": "https://github.com/nicejinux/NXDrawKit",
   "license": {
     "type": "MIT",
