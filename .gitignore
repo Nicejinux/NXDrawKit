@@ -66,3 +66,6 @@ fastlane/test_output
 *.
 .DS_Store
 *.swp
+xcshareddata/*
+Example/NXDrawKit.xcodeproj/xcshareddata/xcbaselines/607FACE41AFB9204008FA782.xcbaseline/273E04DD-B854-4208-BFE4-AD1474C27307.plist
+Example/NXDrawKit.xcodeproj/xcshareddata/xcbaselines/607FACE41AFB9204008FA782.xcbaseline/Info.plist
