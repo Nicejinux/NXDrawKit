@@ -47,11 +47,11 @@ github "nicejinux/NXDrawKit"
 
 ```swift
 // optional
-canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
-canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
 
 // required
-currentBrush() -> Brush?
+func currentBrush() -> Brush?
 ```
 
 ### - Model
@@ -101,30 +101,30 @@ func save()
  - You can customize the color, alpha or width with delegate. (**all delegates are optional**)
 
 ```swift
-didChangeBrushColor(color: UIColor)
-didChangeBrushAlpha(alpha: CGFloat)
-didChangeBrushWidth(width: CGFloat)
+func didChangeBrushColor(color: UIColor)
+func didChangeBrushAlpha(alpha: CGFloat)
+func didChangeBrushWidth(width: CGFloat)
 ```
 
  - ***tag*** can be ***1 ... 12*** 
  - If you return ***nil***, the color of tag will set with default color provided by **NXDrawKit**.
 
 ```swift
-colorWithTag(tag: NSInteger) -> UIColor?
+func colorWithTag(tag: NSInteger) -> UIColor?
 ```
 
  - ***tag*** can be ***1 ... 3***
  - If you return ***-1***, the alpha of tag will set with default alpha provided by **NXDrawKit**.
 
 ```swift
-alphaWithTag(tag: NSInteger) -> CGFloat
+func alphaWithTag(tag: NSInteger) -> CGFloat
 ```
 
  - ***tag*** can be ***1 ... 4***
  - If you return ***-1***, the width of tag will set with default width provided by **NXDrawKit**.
 
 ```swift
-widthWithTag(tag: NSInteger) -> CGFloat
+func widthWithTag(tag: NSInteger) -> CGFloat
 
 ```
 
@@ -140,11 +140,11 @@ func currentBrush() -> Brush
  - All buttons are set with default values without **#selector**.
  - If you want to use buttons on the `ToolBar`, you have to add **#selector** for each buttons.
 ```swift
-public weak var undoButton: UIButton?
-public weak var redoButton: UIButton?
-public weak var saveButton: UIButton?
-public weak var loadButton: UIButton?
-public weak var clearButton: UIButton?
+var undoButton: UIButton?
+var redoButton: UIButton?
+var saveButton: UIButton?
+var loadButton: UIButton?
+var clearButton: UIButton?
 ```
 
 
