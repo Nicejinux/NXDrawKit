@@ -1,0 +1,23 @@
+PODS:
+  - NXDrawKit (0.1.0):
+    - SnapKit (~> 0.15.0)
+  - RSKImageCropper (1.5.1)
+  - SnapKit (0.15.0)
+
+DEPENDENCIES:
+  - NXDrawKit (from `../`)
+  - RSKImageCropper
+  - SnapKit
+
+EXTERNAL SOURCES:
+  NXDrawKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NXDrawKit: 55f4306480f2c02eaa3c6f8987e7ec2a281cdff0
+  RSKImageCropper: edd65fedb3734332818deb139906d6b7f54b8a44
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+
+PODFILE CHECKSUM: 238be3e7a3b704c384982f1ec96077f812aef4e0
+
+COCOAPODS: 1.0.1
