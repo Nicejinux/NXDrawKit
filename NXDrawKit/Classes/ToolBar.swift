@@ -119,9 +119,11 @@ public class ToolBar: UIView
 
         if iconName != nil {
             let podBundle = NSBundle(forClass: self.classForCoder)
-            if let bundleURL = podBundle.URLForResource(iconName, withExtension: "png") {
-                let image = UIImage(named: iconName!, inBundle: podBundle, compatibleWithTraitCollection: nil)
-                button.setImage(image, forState: .Normal)
+            if let bundleURL = podBundle.URLForResource("NXDrawKit", withExtension: "bundle") {
+                if let bundle = NSBundle(URL: bundleURL) {
+                    let image = UIImage(named: iconName!, inBundle: bundle, compatibleWithTraitCollection: nil)
+                    button.setImage(image, forState: .Normal)
+                }
             }
         }
         
