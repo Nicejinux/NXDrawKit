@@ -7,6 +7,9 @@ xcode_sdk: iphonesimulator9.3
 before_install:
   - cd Example
   - brew update
-  - brew install tailor
+  - brew outdated xctool || brew upgrade xctool
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 
-script: set -o pipefail && xcodebuild test -workspace NXDrawKit.xcworkspace -scheme NXDrawKit-Example -sdk iphonesimulator9.3 
+script:
+  - xcodebuild build test -project NXDrawKit.xcodeproj -scheme NXDrawKit-Example | xcpretty
