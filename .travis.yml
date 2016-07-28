@@ -1,6 +1,12 @@
 language: objective-c
 osx_image: xcode7.3
-before_install: cd Example
 xcode_workspace: NXDrawKit.xcworkspace
 xcode_scheme: NXDrawKit-Example
 xcode_sdk: iphonesimulator9.3
+
+before_install:
+  - cd Example
+  - brew update
+  - brew install tailor
+
+script: set -o pipefail && xcodebuild test -workspace NXDrawKit.xcworkspace -scheme NXDrawKit-Example -sdk iphonesimulator9.3 
