@@ -49,6 +49,11 @@ class ViewController: UIViewController
     
     private func setupToolBar() {
         let toolBar = ToolBar()
+        toolBar.undoButton?.addTarget(self, action: #selector(ViewController.onClickUndoButton), forControlEvents: .TouchUpInside)
+        toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), forControlEvents: .TouchUpInside)
+        toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), forControlEvents: .TouchUpInside)
+        toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), forControlEvents: .TouchUpInside)
+        toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), forControlEvents: .TouchUpInside)
         toolBar.loadButton?.enabled = true
         self.view.addSubview(toolBar)
         self.toolBar = toolBar
@@ -60,7 +65,6 @@ class ViewController: UIViewController
     }
     
     private func setupCanvas() {
-        
 //        let canvasView = Canvas(backgroundImage: UIImage.init(named: "frame")!) // You can init with custom background image
         let canvasView = Canvas()
         canvasView.delegate = self
@@ -85,6 +89,26 @@ class ViewController: UIViewController
         self.toolBar?.clearButton?.enabled = canvas.canClear()
     }
     
+    func onClickUndoButton() {
+        self.canvasView?.undo()
+    }
+
+    func onClickRedoButton() {
+        self.canvasView?.redo()
+    }
+
+    func onClickLoadButton() {
+        self.showActionSheetForPhotoSelection()
+    }
+
+    func onClickSaveButton() {
+        self.canvasView?.save()
+    }
+
+    func onClickClearButton() {
+        self.canvasView?.clear()
+    }
+
     
     // MARK: - Image and Photo selection
     private func showActionSheetForPhotoSelection() {
