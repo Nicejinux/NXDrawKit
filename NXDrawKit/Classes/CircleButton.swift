@@ -25,7 +25,7 @@ class CircleButton: UIButton
     // MARK: - Public Methods
     init(diameter: CGFloat, color: UIColor, opacity: CGFloat) {
         super.init(frame: CGRect.init(x: 0, y: 0, width: diameter, height: diameter))
-        self.initialize(_: diameter, color: color, opacity: opacity)
+        self.initialize(diameter, color: color, opacity: opacity)
     }
     
     required init?(coder aDecoder: NSCoder) {
