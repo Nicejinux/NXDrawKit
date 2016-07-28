@@ -5,6 +5,8 @@
 
 
 
+[![Build Status](https://travis-ci.org/Nicejinux/NXDrawKit.svg?branch=master)](https://travis-ci.org/Nicejinux/NXDrawKit)
+
 #Purpose
 It's just started for my personal app for iPhone.
 Though, it can not be customized as much as you want, you can use [Smooth Freehand Drawing View](http://code.tutsplus.com/tutorials/ios-sdk_freehand-drawing--mobile-13164) easily.
