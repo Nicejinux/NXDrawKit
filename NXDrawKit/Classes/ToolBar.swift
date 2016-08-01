@@ -1,6 +1,6 @@
 //
 //  ToolBar.swift
-//  NXSwiiftOne
+//  NXDrawKit
 //
 //  Created by Nicejinux on 7/13/16.
 //  Copyright © 2016 Nicejinux. All rights reserved.

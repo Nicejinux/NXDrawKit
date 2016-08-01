@@ -1,6 +1,6 @@
 //
 //  Session.swift
-//  NXSwiiftOne
+//  NXDrawKit
 //
 //  Created by Nicejinux on 2016. 7. 14..
 //  Copyright © 2016년 Nicejinux. All rights reserved.
@@ -11,15 +11,15 @@ import UIKit
 class Session: NSObject
 {
     private let maxSessionSize = 50
-    private var undoSessionList = [Paper]()
-    private var redoSessionList = [Paper]()
+    private var undoSessionList = [Drawing]()
+    private var redoSessionList = [Drawing]()
     
     override init() {
         super.init()
     }
     
     // MARK: - Private Methods
-    private func appendUndo(session: Paper?) {
+    private func appendUndo(session: Drawing?) {
         if session == nil {
             return
         }
@@ -31,7 +31,7 @@ class Session: NSObject
         self.undoSessionList.append(session!)
     }
     
-    private func appendRedo(session: Paper?) {
+    private func appendRedo(session: Drawing?) {
         if session == nil {
             return
         }
@@ -52,11 +52,11 @@ class Session: NSObject
     }
     
     // MARK: - Public Methods
-    func lastSession() -> Paper? {
+    func lastSession() -> Drawing? {
         return self.undoSessionList.last
     }
     
-    func append(session: Paper?) {
+    func append(session: Drawing?) {
         self.appendUndo(session)
         self.resetRedo()
     }

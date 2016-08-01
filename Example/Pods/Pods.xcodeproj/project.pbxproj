@@ -25,7 +25,7 @@
 		5470E521E81F686A95BE8A3FDBD89E93 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE47F248C45529CD70A5F26BC061F5F /* Session.swift */; };
 		59172FB451A9DDEDFEF3CB15ABC73512 /* icon_undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113D1AB9803BF90AEE61E74B7D1B8430 /* icon_undo@2x.png */; };
 		5C76201D4E1446C4BDDD261BF829C2FA /* UIImage+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = 748B198CBB689E1B8562EA7EFE933709 /* UIImage+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E60D65DCA699EFB875CFD734FFF99A8 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C7EB8C0A4FF4085B7862B0217D5032 /* Paper.swift */; };
+		5E60D65DCA699EFB875CFD734FFF99A8 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C7EB8C0A4FF4085B7862B0217D5032 /* Drawing.swift */; };
 		62DB7B067A86CD128EA8FDB3D91A71A5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191AF6D3DDC36230E7F6E1EF38712D35 /* SnapKit.framework */; };
 		6386094D1BE46AAE1739F53209081476 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFE137D5E98F63FA523456BA3D24E69 /* CGGeometry+RSKImageCropper.m */; };
 		64D5567DC2BDFEEB3A3744F642993076 /* icon_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */; };
@@ -169,7 +169,7 @@
 		7C40016400540BD31A46B23821DCD987 /* SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnapKit.swift; path = Source/SnapKit.swift; sourceTree = "<group>"; };
 		7DDEBD0DD514BF3E4F1CD7B756E93BEC /* RSKImageCropper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSKImageCropper.xcconfig; sourceTree = "<group>"; };
 		833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = icon_camera.png; sourceTree = "<group>"; };
-		86C7EB8C0A4FF4085B7862B0217D5032 /* Paper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
+		86C7EB8C0A4FF4085B7862B0217D5032 /* Drawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		8E1E6968F0387E219054F1B40C890194 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		8FCFA10F72125F8B23691E31395565FA /* Pods-NXDrawKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NXDrawKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -492,7 +492,7 @@
 				6F62BA875ED6329F4FC0B27F7A4274BB /* Canvas.swift */,
 				03AF448B4C77C4F54CA8D09DF10342FE /* CircleButton.swift */,
 				A9138D3AF94FAF52D3CB460895554ED8 /* Palette.swift */,
-				86C7EB8C0A4FF4085B7862B0217D5032 /* Paper.swift */,
+				86C7EB8C0A4FF4085B7862B0217D5032 /* Drawing.swift */,
 				5DE47F248C45529CD70A5F26BC061F5F /* Session.swift */,
 				B70AE2551D556FE773FCC732427F031F /* ToolBar.swift */,
 			);
@@ -788,7 +788,7 @@
 				4497FA6594F5B2138268E1AB0CCF6516 /* CircleButton.swift in Sources */,
 				25DE54DCC6E87742AB062BC1F2D25EE1 /* NXDrawKit-dummy.m in Sources */,
 				41D701F9CB8D6D157BB938BFE9AEC8B8 /* Palette.swift in Sources */,
-				5E60D65DCA699EFB875CFD734FFF99A8 /* Paper.swift in Sources */,
+				5E60D65DCA699EFB875CFD734FFF99A8 /* Drawing.swift in Sources */,
 				5470E521E81F686A95BE8A3FDBD89E93 /* Session.swift in Sources */,
 				41F87E842AB859DCFA68CA0ED74D7A18 /* ToolBar.swift in Sources */,
 			);

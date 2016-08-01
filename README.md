@@ -52,20 +52,17 @@ github "nicejinux/NXDrawKit"
 
 ```swift
 // optional
-func canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
-func canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?)
+func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?)
 
 // required
 func currentBrush() -> Brush?
 ```
 
 ### - Model
-The '***Paper***' means '**The cloth of canvas**' but I don't know the name of that cloth.
-I know it's so weird, but I have no idea for that name.
-If you have a good idea, tell me.
 
 ```swift
-public class Paper: NSObject {
+public class Drawing: NSObject {
     public var stroke: UIImage?
     public var background: UIImage?
     

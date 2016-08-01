@@ -190,11 +190,11 @@ extension ViewController: CanvasDelegate
         return self.paletteView?.currentBrush()
     }
     
-    func canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?) {
+    func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?) {
         self.updateToolBarButtonStatus(canvas)
     }
     
-    func canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?) {
+    func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         // strokeAndBackgroundMergedImage
         if image != nil {
             let data = UIImagePNGRepresentation(image!)

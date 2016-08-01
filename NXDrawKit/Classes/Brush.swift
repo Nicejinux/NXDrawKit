@@ -1,6 +1,6 @@
 //
 //  Brush.swift
-//  NXSwiiftOne
+//  NXDrawKit
 //
 //  Created by Nicejinux on 7/12/16.
 //  Copyright © 2016 Nicejinux. All rights reserved.

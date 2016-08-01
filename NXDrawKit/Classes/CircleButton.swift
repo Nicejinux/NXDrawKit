@@ -1,6 +1,6 @@
 //
 //  CircleButton.swift
-//  NXSwiiftOne
+//  NXDrawKit
 //
 //  Created by Nicejinux on 2016. 7. 12..
 //  Copyright © 2016년 Nicejinux. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Canvas.swift
-//  NXSwiiftOne
+//  NXDrawKit
 //
 //  Created by Nicejinux on 7/14/16.
 //  Copyright © 2016 Nicejinux. All rights reserved.
@@ -10,8 +10,8 @@ import UIKit
 
 @objc public protocol CanvasDelegate
 {
-    optional func canvas(canvas: Canvas, didUpdatePaper paper: Paper, mergedImage image: UIImage?)
-    optional func canvas(canvas: Canvas, didSavePaper paper: Paper, mergedImage image: UIImage?)
+    optional func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?)
+    optional func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?)
     
     func brush() -> Brush?
 }
@@ -27,9 +27,9 @@ public class Canvas: UIView, UITableViewDelegate
     private var tempImageView = UIImageView()
     private var backgroundImageView = UIImageView()
     
-    private var paper = Paper()
     private var brush = Brush()
     private let session = Session()
+    private var drawing = Drawing()
     private let path = UIBezierPath()
     private let scale = UIScreen.mainScreen().scale
 
@@ -88,8 +88,8 @@ public class Canvas: UIView, UITableViewDelegate
         return data1!.isEqual(data2)
     }
     
-    private func currentPaper() -> Paper {
-        return Paper(stroke: self.mainImageView.image, background: self.backgroundImageView.image)
+    private func currentPaper() -> Drawing {
+        return Drawing(stroke: self.mainImageView.image, background: self.backgroundImageView.image)
     }
     
     private func updateByLastSession() {
@@ -99,25 +99,25 @@ public class Canvas: UIView, UITableViewDelegate
     }
     
     private func didUpdateCanvas() {
-        let mergedImage = self.mergePathesAndImages()
+        let mergedImage = self.mergePathsAndImages()
         let currentPaper = self.currentPaper()
-        self.delegate?.canvas?(self, didUpdatePaper: currentPaper, mergedImage: mergedImage)
+        self.delegate?.canvas?(self, didUpdateDrawing: currentPaper, mergedImage: mergedImage)
     }
     
     private func didSaveCanvas() {
-        let mergedImage = self.mergePathesAndImages()
-        self.delegate?.canvas?(self, didSavePaper: self.paper, mergedImage: mergedImage)
+        let mergedImage = self.mergePathsAndImages()
+        self.delegate?.canvas?(self, didSaveDrawing: self.drawing, mergedImage: mergedImage)
     }
     
     private func isStrokeEqual() -> Bool {
-        return self.compare(self.paper.stroke, isEqualTo: self.mainImageView.image)
+        return self.compare(self.drawing.stroke, isEqualTo: self.mainImageView.image)
     }
     
     private func isBackgroundEqual() -> Bool {
-        return self.compare(self.paper.background, isEqualTo: self.backgroundImageView.image)
+        return self.compare(self.drawing.background, isEqualTo: self.backgroundImageView.image)
     }
 
-    private func mergePathesAndImages() -> UIImage {
+    private func mergePathsAndImages() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
         if self.backgroundImageView.image != nil {
@@ -188,7 +188,7 @@ public class Canvas: UIView, UITableViewDelegate
             self.strokePath()
         }
         
-        self.mergePathes()      // merge all pathes
+        self.mergePaths()      // merge all paths
         self.didUpdateCanvas()
         
         self.path.removeAllPoints()
@@ -207,7 +207,7 @@ public class Canvas: UIView, UITableViewDelegate
         UIGraphicsEndImageContext()
     }
     
-    private func mergePathes() {
+    private func mergePaths() {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
         self.mainImageView.image?.drawInRect(self.bounds)
@@ -281,8 +281,8 @@ public class Canvas: UIView, UITableViewDelegate
     }
     
     public func save() {
-        self.paper.stroke = self.mainImageView.image?.copy() as? UIImage
-        self.paper.background = self.backgroundImageView.image
+        self.drawing.stroke = self.mainImageView.image?.copy() as? UIImage
+        self.drawing.background = self.backgroundImageView.image
         self.saved = true
         self.didSaveCanvas()
     }
