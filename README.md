@@ -32,7 +32,7 @@ This framework consists of 3 kinds of views.
 
 #Installation
 
-##Using cocoapods:
+##Using CocoaPods:
 ```
 pod 'NXDrawKit'
 ```
