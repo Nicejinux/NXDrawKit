@@ -30,18 +30,32 @@ This framework consists of 3 kinds of views.
 
 
 
-#Installation
+# Installation
 
-##Using CocoaPods:
-```
+## CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install `NXDrawKit` by adding it to your `Podfile`:
+
+```ruby
+platform :ios, '8.0'
+use_frameworks!
 pod 'NXDrawKit'
 ```
 
-##Using Carthage:
+To get the full benefits import `NXDrawKit` wherever you import UIKit
+
+``` swift
+import UIKit
+import NXDrawKit
+```
+## Carthage
+Create a `Cartfile` that lists the framework and run `carthage bootstrap`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/NXDrawKit.framework` to an iOS project.
+
 ```
 github "nicejinux/NXDrawKit"
 ```
-
+## Manually
+1. Download and drop ```/NXDrawKit``` folder in your project.  
+2. Congratulations!  
 
 #Components
 ##Canvas 
