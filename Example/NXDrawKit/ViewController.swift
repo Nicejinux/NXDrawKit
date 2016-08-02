@@ -116,7 +116,6 @@ class ViewController: UIViewController
         actionSheet.showInView(self.view)
     }
     
-    
     private func showPhotoLibrary () {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -125,7 +124,6 @@ class ViewController: UIViewController
         
         self.presentViewController(picker, animated: true, completion: nil)
     }
-    
     
     private func showCamera() {
         let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
@@ -142,7 +140,6 @@ class ViewController: UIViewController
             break
         }
     }
-    
     
     private func showAlertForImagePickerPermission() {
         let message = "If you want to use camera, you should allow app to use.\nPlease check your permission"
@@ -220,10 +217,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         let selectedImage : UIImage = image
         picker.dismissViewControllerAnimated(true, completion: { [weak self] in
-            let cropper = RSKImageCropViewController(image:selectedImage, cropMode:RSKImageCropMode.Square)
+            let cropper = RSKImageCropViewController(image:selectedImage, cropMode:.Square)
             cropper.delegate = self
             self?.presentViewController(cropper, animated: true, completion: nil)
-            })
+        })
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
