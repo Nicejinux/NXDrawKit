@@ -88,7 +88,7 @@ public class Canvas: UIView, UITableViewDelegate
         return data1!.isEqual(data2)
     }
     
-    private func currentPaper() -> Drawing {
+    private func currentDrawing() -> Drawing {
         return Drawing(stroke: self.mainImageView.image, background: self.backgroundImageView.image)
     }
     
@@ -100,7 +100,7 @@ public class Canvas: UIView, UITableViewDelegate
     
     private func didUpdateCanvas() {
         let mergedImage = self.mergePathsAndImages()
-        let currentPaper = self.currentPaper()
+        let currentPaper = self.currentDrawing()
         self.delegate?.canvas?(self, didUpdateDrawing: currentPaper, mergedImage: mergedImage)
     }
     
@@ -254,7 +254,7 @@ public class Canvas: UIView, UITableViewDelegate
     // MARK: - Public Methods
     public func update(backgroundImage: UIImage?) {
         self.backgroundImageView.image = backgroundImage
-        self.session.append(self.currentPaper())
+        self.session.append(self.currentDrawing())
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
