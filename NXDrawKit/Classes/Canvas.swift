@@ -50,6 +50,7 @@ public class Canvas: UIView, UITableViewDelegate
         self.initialize()
     }
     
+    // MARK: - Private Methods
     private func initialize() {
         self.backgroundColor = UIColor.whiteColor()
         
@@ -70,7 +71,6 @@ public class Canvas: UIView, UITableViewDelegate
         })
     }
     
-    // MARK: - Private Methods
     private func compare(image1: UIImage?, isEqualTo image2: UIImage?) -> Bool {
         if (image1 == nil && image2 == nil) {
             return true

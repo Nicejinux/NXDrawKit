@@ -26,7 +26,7 @@ class CircleButton: UIButton
         willSet(enabledValue) {
             super.enabled = enabledValue
             
-            // if button is disabled, selected color will be change to clear color
+            // if button is disabled, selected color should be changed to clear color
             let selected = self.selected
             self.selected = selected
         }
@@ -42,7 +42,7 @@ class CircleButton: UIButton
         super.init(coder: aDecoder)
     }
 
-    func update(color: UIColor) {
+    internal func update(color: UIColor) {
         self.color = color
         self.selected = super.selected
         self.backgroundColor = color.colorWithAlphaComponent(self.opacity!)

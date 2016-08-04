@@ -49,6 +49,10 @@ public class Palette: UIView
         super.init(coder: aDecoder)
     }
     
+    public func currentBrush() -> Brush {
+        return self.brush
+    }
+    
 
     // MARK: - Private Methods
     override public func intrinsicContentSize() -> CGSize {
@@ -285,9 +289,5 @@ public class Palette: UIView
             return width
         }
         return self.buttonDiameter * (CGFloat(tag) / 4.0)
-    }
-    
-    public func currentBrush() -> Brush {
-        return self.brush
     }
 }
