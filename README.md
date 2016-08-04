@@ -124,6 +124,7 @@ func didChangeBrushWidth(width: CGFloat)
 
  - ***tag*** can be ***1 ... 12*** 
  - If you return ***nil***, the color of tag will set with default color provided by **NXDrawKit**.
+ - If you return ***clearColor()***, the color of tag will be Eraser.
 
 ```swift
 func colorWithTag(tag: NSInteger) -> UIColor?
@@ -164,12 +165,19 @@ var clearButton: UIButton?
 ```
 
 
-#Will be improved
-1. There is no Eraser, so user can't erase stroke.
-2. User can't remove background image after it's set.
-3. `Palette` and `ToolBar` can't customize easily.
-4. All the codes looks like ***ObjC***.
+#Version History
+* 0.3.0
+    * ADD: Eraser added
+* 0.2.0
+    * CHANGE: Data model renamed `Paper` to `Drawing`
+* 0.1.0
+    * Release
 
+##Will be improved
+- [x] There is no Eraser, so user can't erase stroke. - added v0.2.0
+- [ ] User can't remove background image after it's set.
+- [ ] `Palette` and `ToolBar` can't customize easily.
+- [ ] All the codes looks like ***ObjC***.
 
 
 #Author
