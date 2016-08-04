@@ -29,9 +29,9 @@ class ViewController: UIViewController
     }
     
     private func initialize() {
+        self.setupCanvas()
         self.setupPalette()
         self.setupToolBar()
-        self.setupCanvas()
     }
     
     private func setupPalette() {
@@ -290,12 +290,13 @@ extension ViewController: PaletteDelegate
     
 
     // tag can be 1 ... 12
-//    func colorWithTag(tag: NSInteger) -> UIColor? {
-//        if tag == 3 {
-//            return UIColor.purpleColor()
-//        }
-//        return nil
-//    }
+    func colorWithTag(tag: NSInteger) -> UIColor? {
+        if tag == 4 {
+            // if you return clearColor, it will be eraser
+            return UIColor.clearColor()
+        }
+        return nil
+    }
     
     // tag can be 1 ... 4
 //    func widthWithTag(tag: NSInteger) -> CGFloat {

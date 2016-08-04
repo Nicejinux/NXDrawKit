@@ -35,6 +35,9 @@
 		6CA06CDAE7E5898A6A5C3D3ACA1B79C9 /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41CF654B06DBDFC891F6068597F85806 /* icon_camera@2x.png */; };
 		6F176501168DE0D0977EF83689894E18 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC852B3D88B5F90CE113D28EE10CB1A6 /* EdgeInsets.swift */; };
 		70E4569105302CFDEF0D7F55B68EF694 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09F1A27CC25B3690A0F02062945BDFA /* UIKit.framework */; };
+		72AEE2081D5372A700F05C88 /* icon_eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2041D5372A700F05C88 /* icon_eraser.png */; };
+		72AEE20A1D5372A700F05C88 /* icon_eraser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2051D5372A700F05C88 /* icon_eraser@2x.png */; };
+		72AEE20C1D5372A700F05C88 /* icon_eraser@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2061D5372A700F05C88 /* icon_eraser@3x.png */; };
 		82F1DBF1158F086CBD64D8D1D5BA8A2C /* NXDrawKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93F11C2F18507944BAAAEE4349B0AC81 /* NXDrawKit.bundle */; };
 		836B05A175CFB69A39E52AC9D48A3BF8 /* RSKImageCropper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0928E74E5B6A17AC046AC186EBCAF4 /* RSKImageCropper-dummy.m */; };
 		85CA061D5551284F6327CC68DA1F77ED /* icon_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */; };
@@ -163,6 +166,9 @@
 		6BECFFD062601874F109B7400B5491C2 /* RSKImageCropperStrings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = RSKImageCropperStrings.bundle; path = RSKImageCropper/RSKImageCropperStrings.bundle; sourceTree = "<group>"; };
 		6E0928E74E5B6A17AC046AC186EBCAF4 /* RSKImageCropper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSKImageCropper-dummy.m"; sourceTree = "<group>"; };
 		6F62BA875ED6329F4FC0B27F7A4274BB /* Canvas.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		72AEE2041D5372A700F05C88 /* icon_eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_eraser.png; sourceTree = "<group>"; };
+		72AEE2051D5372A700F05C88 /* icon_eraser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_eraser@2x.png"; sourceTree = "<group>"; };
+		72AEE2061D5372A700F05C88 /* icon_eraser@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_eraser@3x.png"; sourceTree = "<group>"; };
 		748B198CBB689E1B8562EA7EFE933709 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+RSKImageCropper.h"; path = "RSKImageCropper/UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		7A6EA2FA84638283D5B9B1F816031681 /* Pods-NXDrawKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NXDrawKit_Tests.modulemap"; sourceTree = "<group>"; };
 		7C086698BC3ED1D601EE0FDC49E8852D /* icon_undo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@3x.png"; sourceTree = "<group>"; };
@@ -285,6 +291,9 @@
 		0A294E6B37436EDD5CE667985297D631 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				72AEE2041D5372A700F05C88 /* icon_eraser.png */,
+				72AEE2051D5372A700F05C88 /* icon_eraser@2x.png */,
+				72AEE2061D5372A700F05C88 /* icon_eraser@3x.png */,
 				833A985C48B3D8E47464A78784A4B400 /* icon_camera.png */,
 				41CF654B06DBDFC891F6068597F85806 /* icon_camera@2x.png */,
 				5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */,
@@ -736,14 +745,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72AEE2081D5372A700F05C88 /* icon_eraser.png in Resources */,
 				64D5567DC2BDFEEB3A3744F642993076 /* icon_camera.png in Resources */,
 				6CA06CDAE7E5898A6A5C3D3ACA1B79C9 /* icon_camera@2x.png in Resources */,
 				85CA061D5551284F6327CC68DA1F77ED /* icon_camera@3x.png in Resources */,
+				72AEE20A1D5372A700F05C88 /* icon_eraser@2x.png in Resources */,
 				47E198AFBF03551C3C3838DD278F7208 /* icon_redo.png in Resources */,
 				2AB0301808EC85C8F883C93318469A70 /* icon_redo@2x.png in Resources */,
 				BC23F201C028EDE25556E47AF2E01113 /* icon_redo@3x.png in Resources */,
 				29FC3B0E3830FF60BEE5E24A5FB9234A /* icon_undo.png in Resources */,
 				59172FB451A9DDEDFEF3CB15ABC73512 /* icon_undo@2x.png in Resources */,
+				72AEE20C1D5372A700F05C88 /* icon_eraser@3x.png in Resources */,
 				C74CDF5D1D1B088A74BFEC8B133B526F /* icon_undo@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

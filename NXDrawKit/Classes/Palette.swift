@@ -191,9 +191,11 @@ public class Palette: UIView
     
     @objc private func onClickColorPicker(button: CircleButton) {
         self.brush.color = button.color!;
+        let shouldEnable = !self.brush.color.isEqual(UIColor.clearColor())
+
         self.resetButtonSelected(self.colorButtonList, button: button)
         self.updateColorOfButtons(self.widthButtonList, color: button.color!)
-        self.updateColorOfButtons(self.alphaButtonList, color: button.color!)
+        self.updateColorOfButtons(self.alphaButtonList, color: button.color!, enable: shouldEnable)
         
         self.delegate?.didChangeBrushColor?(self.brush.color)
     }
@@ -218,9 +220,10 @@ public class Palette: UIView
         }
     }
     
-    private func updateColorOfButtons(list: [CircleButton], color: UIColor) {
+    private func updateColorOfButtons(list: [CircleButton], color: UIColor, enable: Bool = true) {
         for aButton: CircleButton in list {
             aButton.update(color)
+            aButton.enabled = enable
         }
     }
     

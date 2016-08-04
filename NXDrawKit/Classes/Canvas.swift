@@ -116,25 +116,8 @@ public class Canvas: UIView, UITableViewDelegate
     private func isBackgroundEqual() -> Bool {
         return self.compare(self.drawing.background, isEqualTo: self.backgroundImageView.image)
     }
-
-    private func mergePathsAndImages() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
-        
-        if self.backgroundImageView.image != nil {
-            let rect = self.centeredBackgroundImageRect()
-            self.backgroundImageView.image?.drawInRect(rect)       // draw background image
-        }
-        
-        self.mainImageView.image?.drawInRect(self.bounds)  // draw stroke
-
-        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()  // merge
-        
-        UIGraphicsEndImageContext()
-        
-        return mergedImage
-    }
     
-    
+
     // MARK: - Override Methods
     public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.saved = false
@@ -198,11 +181,18 @@ public class Canvas: UIView, UITableViewDelegate
     private func strokePath() {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
-        self.brush.color.colorWithAlphaComponent(self.brush.alpha).setStroke()
         self.path.lineWidth = (self.brush.width / self.scale)
-        self.path.stroke()
+        self.brush.color.colorWithAlphaComponent(self.brush.alpha).setStroke()
         
-        self.tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        if self.brush.isEraser {
+            // should draw on screen for being erased
+            self.mainImageView.image?.drawInRect(self.bounds)
+        }
+        
+        self.path.strokeWithBlendMode(brush.blendMode, alpha: 1)
+
+        var targetImageView = self.brush.isEraser ? self.mainImageView : self.tempImageView
+        targetImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
     }
@@ -214,10 +204,27 @@ public class Canvas: UIView, UITableViewDelegate
         self.tempImageView.image?.drawInRect(self.bounds)
         
         self.mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        self.session.append(self.currentPaper())
+        self.session.append(self.currentDrawing())
         self.tempImageView.image = nil
         
         UIGraphicsEndImageContext()
+    }
+    
+    private func mergePathsAndImages() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
+        
+        if self.backgroundImageView.image != nil {
+            let rect = self.centeredBackgroundImageRect()
+            self.backgroundImageView.image?.drawInRect(rect)            // draw background image
+        }
+        
+        self.mainImageView.image?.drawInRect(self.bounds)               // draw stroke
+        
+        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()   // merge
+        
+        UIGraphicsEndImageContext()
+        
+        return mergedImage
     }
     
     private func centeredBackgroundImageRect() -> CGRect {
