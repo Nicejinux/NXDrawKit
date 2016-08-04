@@ -70,7 +70,7 @@ func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image
 func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?)
 
 // required
-func currentBrush() -> Brush?
+func brush() -> Brush?
 ```
 
 ### - Model
