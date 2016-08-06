@@ -53,6 +53,8 @@ class ViewController: UIViewController
         toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), forControlEvents: .TouchUpInside)
         toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), forControlEvents: .TouchUpInside)
         toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), forControlEvents: .TouchUpInside)
+        // default title is "Save"
+        toolBar.saveButton?.setTitle("share", forState: .Normal)
         toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), forControlEvents: .TouchUpInside)
         toolBar.loadButton?.enabled = true
         self.view.addSubview(toolBar)
@@ -192,17 +194,23 @@ extension ViewController: CanvasDelegate
     }
     
     func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
-        // strokeAndBackgroundMergedImage
-        if let pngImage = image?.asPNGImage() {
-            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
-        }
+        // you can save strokeAndBackgroundMergedImage
+//        if let pngImage = image?.asPNGImage() {
+//            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+//        }
         
-        // strokeImage
+        // you can save strokeImage only
 //        if let pngImage = drawing.stroke?.asPNGImage() {
 //            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
 //        }
         
-        self.updateToolBarButtonStatus(canvas)
+//        self.updateToolBarButtonStatus(canvas)
+        
+        // you can share your image with UIActivityViewController
+        if let pngImage = image?.asPNGImage() {
+            let activityViewController = UIActivityViewController(activityItems: [pngImage], applicationActivities: nil)
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+        }
     }
 }
 
