@@ -194,12 +194,12 @@ extension ViewController: CanvasDelegate
     }
     
     func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
-        // you can save strokeAndBackgroundMergedImage
+        // you can save merged image
 //        if let pngImage = image?.asPNGImage() {
 //            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
 //        }
         
-        // you can save strokeImage only
+        // you can save strokeImage
 //        if let pngImage = drawing.stroke?.asPNGImage() {
 //            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
 //        }
