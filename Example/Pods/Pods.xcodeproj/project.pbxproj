@@ -38,6 +38,7 @@
 		72AEE2081D5372A700F05C88 /* icon_eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2041D5372A700F05C88 /* icon_eraser.png */; };
 		72AEE20A1D5372A700F05C88 /* icon_eraser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2051D5372A700F05C88 /* icon_eraser@2x.png */; };
 		72AEE20C1D5372A700F05C88 /* icon_eraser@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72AEE2061D5372A700F05C88 /* icon_eraser@3x.png */; };
+		72AEE20E1D55BA5800F05C88 /* UIImageExtractExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEE20D1D55BA5800F05C88 /* UIImageExtractExtension.swift */; };
 		82F1DBF1158F086CBD64D8D1D5BA8A2C /* NXDrawKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93F11C2F18507944BAAAEE4349B0AC81 /* NXDrawKit.bundle */; };
 		836B05A175CFB69A39E52AC9D48A3BF8 /* RSKImageCropper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0928E74E5B6A17AC046AC186EBCAF4 /* RSKImageCropper-dummy.m */; };
 		85CA061D5551284F6327CC68DA1F77ED /* icon_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156BB861AFBBE5B2C65F507F18F459C /* icon_camera@3x.png */; };
@@ -169,6 +170,7 @@
 		72AEE2041D5372A700F05C88 /* icon_eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_eraser.png; sourceTree = "<group>"; };
 		72AEE2051D5372A700F05C88 /* icon_eraser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_eraser@2x.png"; sourceTree = "<group>"; };
 		72AEE2061D5372A700F05C88 /* icon_eraser@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_eraser@3x.png"; sourceTree = "<group>"; };
+		72AEE20D1D55BA5800F05C88 /* UIImageExtractExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtractExtension.swift; sourceTree = "<group>"; };
 		748B198CBB689E1B8562EA7EFE933709 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+RSKImageCropper.h"; path = "RSKImageCropper/UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		7A6EA2FA84638283D5B9B1F816031681 /* Pods-NXDrawKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NXDrawKit_Tests.modulemap"; sourceTree = "<group>"; };
 		7C086698BC3ED1D601EE0FDC49E8852D /* icon_undo@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icon_undo@3x.png"; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				86C7EB8C0A4FF4085B7862B0217D5032 /* Drawing.swift */,
 				5DE47F248C45529CD70A5F26BC061F5F /* Session.swift */,
 				B70AE2551D556FE773FCC732427F031F /* ToolBar.swift */,
+				72AEE20D1D55BA5800F05C88 /* UIImageExtractExtension.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72AEE20E1D55BA5800F05C88 /* UIImageExtractExtension.swift in Sources */,
 				F2B5847DD1EE5380A1BB8145826460F4 /* Brush.swift in Sources */,
 				CEF7EE8B44C39D16577DEDBC07FE7A8F /* Canvas.swift in Sources */,
 				4497FA6594F5B2138268E1AB0CCF6516 /* CircleButton.swift in Sources */,
