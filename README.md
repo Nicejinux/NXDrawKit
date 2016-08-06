@@ -164,6 +164,38 @@ var loadButton: UIButton?
 var clearButton: UIButton?
 ```
 
+##UIImage Extension
+  - This extension can make you get PNG or JPEG format image directly for shareing or saving from what you draw.
+  - All methods can return ***nil***, so you should check before use whether it's ***nil*** or not.
+```swift
+public extension UIImage {
+    public func asPNGData() -> NSData? {
+        return UIImagePNGRepresentation(self)
+    }
+    
+    public func asJPEGData(quality: CGFloat) -> NSData? {
+        return UIImageJPEGRepresentation(self, quality);
+    }
+    
+    public func asPNGImage() -> UIImage? {
+        if let data = self.asPNGData() {
+            return UIImage.init(data: data)
+        }
+        
+        return nil
+    }
+
+    public func asJPGImage(quality: CGFloat) -> UIImage? {
+        if let data = self.asJPEGData(quality) {
+            return UIImage.init(data: data)
+        }
+        
+        return nil
+    }
+}
+```
+
+
 
 #Version History
 * 0.3.0
