@@ -193,17 +193,13 @@ extension ViewController: CanvasDelegate
     
     func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         // strokeAndBackgroundMergedImage
-        if image != nil {
-            let data = UIImagePNGRepresentation(image!)
-            let newImage = UIImage.init(data: data!)
-            UIImageWriteToSavedPhotosAlbum(newImage!, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        if let pngImage = image?.asPNGImage() {
+            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
         
         // strokeImage
-//        if strokeImage != nil {
-//            let data = UIImagePNGRepresentation(strokeImage!)
-//            let newImage = UIImage(data: data!)
-//            UIImageWriteToSavedPhotosAlbum(newImage!, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+//        if let pngImage = drawing.stroke?.asPNGImage() {
+//            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
 //        }
         
         self.updateToolBarButtonStatus(canvas)
