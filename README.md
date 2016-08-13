@@ -165,7 +165,7 @@ var clearButton: UIButton?
 ```
 
 ##UIImage Extension
-  - This extension can make you get **PNG** or **JPEG** format image directly for shareing or saving from what you draw.
+  - This extension can make you get **PNG** or **JPEG** format image directly for sharing or saving from what you draw.
   - All methods can return ***nil***, so you should check before use whether it's ***nil*** or not.
 ```swift
 public extension UIImage {
@@ -209,7 +209,7 @@ public extension UIImage {
 - [x] There is no Eraser, so user can't erase stroke. - added v0.2.0
 - [ ] User can't remove background image after it's set.
 - [ ] `Palette` and `ToolBar` can't customize easily.
-- [ ] All the codes looks like ***ObjC***.
+- [ ] All the code looks like ***ObjC***.
 
 
 #Author
