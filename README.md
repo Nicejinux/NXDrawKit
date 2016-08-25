@@ -198,6 +198,8 @@ public extension UIImage {
 
 
 #Version History
+* 0.3.4
+    * FIX: Removing background image issue 
 * 0.3.0
     * ADD: Eraser added
 * 0.2.0

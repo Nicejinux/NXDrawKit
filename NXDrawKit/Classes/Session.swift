@@ -13,6 +13,7 @@ class Session: NSObject
     private let maxSessionSize = 50
     private var undoSessionList = [Drawing]()
     private var redoSessionList = [Drawing]()
+    private var backgroundSession: Drawing?
     
     override init() {
         super.init()
@@ -53,7 +54,19 @@ class Session: NSObject
     
     // MARK: - Public Methods
     func lastSession() -> Drawing? {
-        return self.undoSessionList.last
+        if self.undoSessionList.last != nil {
+            return self.undoSessionList.last
+        } else if self.backgroundSession != nil {
+            return self.backgroundSession
+        }
+        
+        return nil
+    }
+    
+    func appendBackground(session: Drawing?) {
+        if session != nil {
+            self.backgroundSession = session
+        }
     }
     
     func append(session: Drawing?) {
