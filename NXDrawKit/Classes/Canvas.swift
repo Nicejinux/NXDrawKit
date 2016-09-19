@@ -160,8 +160,8 @@ public class Canvas: UIView, UITableViewDelegate
         self.strokePath()
     }
     
-    public override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        self.touchesEnded(touches!, withEvent: event)
+    public override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.touchesEnded(touches, withEvent: event)
     }
     
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -191,7 +191,7 @@ public class Canvas: UIView, UITableViewDelegate
         
         self.path.strokeWithBlendMode(brush.blendMode, alpha: 1)
 
-        var targetImageView = self.brush.isEraser ? self.mainImageView : self.tempImageView
+        let targetImageView = self.brush.isEraser ? self.mainImageView : self.tempImageView
         targetImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
@@ -224,7 +224,7 @@ public class Canvas: UIView, UITableViewDelegate
         
         UIGraphicsEndImageContext()
         
-        return mergedImage
+        return mergedImage!
     }
     
     private func centeredBackgroundImageRect() -> CGRect {

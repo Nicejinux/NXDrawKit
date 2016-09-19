@@ -162,7 +162,7 @@ private extension NSLayoutAttribute {
         case .Height:               return "height"
         case .CenterX:              return "centerX"
         case .CenterY:              return "centerY"
-        case .Baseline:             return "baseline"
+        case .LastBaseline:         return "baseline"
         case .FirstBaseline:        return "firstBaseline"
         case .TopMargin:            return "topMargin"
         case .LeftMargin:           return "leftMargin"

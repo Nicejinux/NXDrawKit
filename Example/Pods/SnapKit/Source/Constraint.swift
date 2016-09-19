@@ -400,7 +400,7 @@ private extension NSLayoutAttribute {
             #if os(iOS)
                 switch self {
                 case .Left, .CenterX, .LeftMargin, .CenterXWithinMargins: return point.x
-                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .Baseline, .FirstBaseline: return point.y
+                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .LastBaseline, .FirstBaseline: return point.y
                 case .Right, .RightMargin: return point.x
                 case .Bottom, .BottomMargin: return point.y
                 case .Leading, .LeadingMargin: return point.x
@@ -425,7 +425,7 @@ private extension NSLayoutAttribute {
             #if os(iOS)
                 switch self {
                 case .Left, .CenterX, .LeftMargin, .CenterXWithinMargins: return insets.left
-                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .Baseline, .FirstBaseline: return insets.top
+                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .LastBaseline, .FirstBaseline: return insets.top
                 case .Right, .RightMargin: return insets.right
                 case .Bottom, .BottomMargin: return insets.bottom
                 case .Leading, .LeadingMargin: return  (Config.interfaceLayoutDirection == .LeftToRight) ? insets.left : -insets.right
