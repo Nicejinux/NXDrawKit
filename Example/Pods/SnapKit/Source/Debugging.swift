@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #else
 import AppKit
@@ -62,7 +62,10 @@ public extension LayoutConstraint {
         
         description += descriptionForObject(self)
         
-        description += " \(descriptionForObject(self.firstItem))"
+        if let firstItem: AnyObject = self.firstItem {
+            description += " \(descriptionForObject(firstItem))"
+        }
+        
         if self.firstAttribute != .NotAnAttribute {
             description += ".\(self.firstAttribute.snp_description)"
         }
@@ -149,7 +152,7 @@ private extension NSLayoutRelation {
 private extension NSLayoutAttribute {
     
     private var snp_description: String {
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
         switch self {
         case .NotAnAttribute:       return "notAnAttribute"
         case .Top:                  return "top"
@@ -162,7 +165,7 @@ private extension NSLayoutAttribute {
         case .Height:               return "height"
         case .CenterX:              return "centerX"
         case .CenterY:              return "centerY"
-        case .Baseline:             return "baseline"
+        case .LastBaseline:             return "baseline"
         case .FirstBaseline:        return "firstBaseline"
         case .TopMargin:            return "topMargin"
         case .LeftMargin:           return "leftMargin"
@@ -186,7 +189,7 @@ private extension NSLayoutAttribute {
         case .Height:               return "height"
         case .CenterX:              return "centerX"
         case .CenterY:              return "centerY"
-        case .Baseline:             return "baseline"
+        case .LastBaseline:             return "baseline"
         default:                    return "default"
         }
         #endif

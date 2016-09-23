@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #else
 import AppKit
@@ -57,6 +57,8 @@ public class Constraint {
     public func updatePriorityHigh() -> Void { fatalError("Must be implemented by Concrete subclass.") }
     public func updatePriorityMedium() -> Void { fatalError("Must be implemented by Concrete subclass.") }
     public func updatePriorityLow() -> Void { fatalError("Must be implemented by Concrete subclass.") }
+
+    public var layoutConstraints: [LayoutConstraint] { fatalError("Must be implemented by Concrete subclass.") }
     
     internal var makerFile: String = "Unknown"
     internal var makerLine: UInt = 0
@@ -119,7 +121,7 @@ internal class ConcreteConstraint: Constraint {
         self.updatePriority(Float(750.0))
     }
     internal override func updatePriorityMedium() -> Void {
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
         self.updatePriority(Float(500.0))
         #else
         self.updatePriority(Float(501.0))
@@ -193,15 +195,29 @@ internal class ConcreteConstraint: Constraint {
         }
     }
     
+    private let label: String?
+    
     private var installInfo: ConcreteConstraintInstallInfo? = nil
     
-    internal init(fromItem: ConstraintItem, toItem: ConstraintItem, relation: ConstraintRelation, constant: Any, multiplier: Float, priority: Float) {
+    override var layoutConstraints: [LayoutConstraint] {
+        if installInfo == nil {
+            install()
+        }
+        
+        guard let installInfo = installInfo else {
+            return []
+        }
+        return installInfo.layoutConstraints.allObjects as! [LayoutConstraint]
+    }
+
+    internal init(fromItem: ConstraintItem, toItem: ConstraintItem, relation: ConstraintRelation, constant: Any, multiplier: Float, priority: Float, label: String? = nil) {
         self.fromItem = fromItem
         self.toItem = toItem
         self.relation = relation
         self.constant = constant
         self.multiplier = multiplier
         self.priority = priority
+        self.label = label
     }
     
     internal func installOnView(updateExisting updateExisting: Bool = false, file: String? = nil, line: UInt? = nil) -> [LayoutConstraint] {
@@ -251,7 +267,7 @@ internal class ConcreteConstraint: Constraint {
             let layoutConstant: CGFloat = layoutToAttribute.snp_constantForValue(self.constant)
             
             // get layout to
-            #if os(iOS)
+            #if os(iOS) || os(tvOS)
             var layoutTo: AnyObject? = self.toItem.view ?? self.toItem.layoutSupport
             #else
             var layoutTo: AnyObject? = self.toItem.view
@@ -269,6 +285,7 @@ internal class ConcreteConstraint: Constraint {
                 attribute: layoutToAttribute,
                 multiplier: CGFloat(self.multiplier),
                 constant: layoutConstant)
+            layoutConstraint.identifier = self.label
             
             // set priority
             layoutConstraint.priority = self.priority
@@ -315,7 +332,15 @@ internal class ConcreteConstraint: Constraint {
         }
         
         // add constraints
-        installOnView!.addConstraints(newLayoutConstraints)
+        #if SNAPKIT_DEPLOYMENT_LEGACY && !os(OSX)
+        if #available(iOS 8.0, *) {
+            NSLayoutConstraint.activateConstraints(newLayoutConstraints)
+        } else {
+            installOnView!.addConstraints(newLayoutConstraints)
+        }
+        #else
+            NSLayoutConstraint.activateConstraints(newLayoutConstraints)
+        #endif
         
         // set install info
         self.installInfo = ConcreteConstraintInstallInfo(view: installOnView, layoutConstraints: NSHashTable.weakObjectsHashTable())
@@ -337,11 +362,16 @@ internal class ConcreteConstraint: Constraint {
             let installedLayoutConstraints = installInfo.layoutConstraints.allObjects as? [LayoutConstraint] {
                 
                 if installedLayoutConstraints.count > 0 {
-                    
-                    if let installedOnView = installInfo.view {
-                        // remove the constraints from the UIView's storage
+                    // remove the constraints from the UIView's storage
+                    #if SNAPKIT_DEPLOYMENT_LEGACY && !os(OSX)
+                    if #available(iOS 8.0, *) {
+                        NSLayoutConstraint.deactivateConstraints(installedLayoutConstraints)
+                    } else if let installedOnView = installInfo.view {
                         installedOnView.removeConstraints(installedLayoutConstraints)
                     }
+                    #else
+                        NSLayoutConstraint.deactivateConstraints(installedLayoutConstraints)
+                    #endif
                     
                     // remove the constraints from the from item view
                     if let fromView = self.fromItem.view {
@@ -397,10 +427,10 @@ private extension NSLayoutAttribute {
         }
             // CGPoint
         else if let point = value as? CGPoint {
-            #if os(iOS)
+            #if os(iOS) || os(tvOS)
                 switch self {
                 case .Left, .CenterX, .LeftMargin, .CenterXWithinMargins: return point.x
-                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .Baseline, .FirstBaseline: return point.y
+                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .LastBaseline, .FirstBaseline: return point.y
                 case .Right, .RightMargin: return point.x
                 case .Bottom, .BottomMargin: return point.y
                 case .Leading, .LeadingMargin: return point.x
@@ -410,7 +440,7 @@ private extension NSLayoutAttribute {
             #else
                 switch self {
                 case .Left, .CenterX: return point.x
-                case .Top, .CenterY, .Baseline: return point.y
+                case .Top, .CenterY, .LastBaseline: return point.y
                 case .Right: return point.x
                 case .Bottom: return point.y
                 case .Leading: return point.x
@@ -422,25 +452,29 @@ private extension NSLayoutAttribute {
         }
             // EdgeInsets
         else if let insets = value as? EdgeInsets {
-            #if os(iOS)
+            #if os(iOS) || os(tvOS)
                 switch self {
                 case .Left, .CenterX, .LeftMargin, .CenterXWithinMargins: return insets.left
-                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .Baseline, .FirstBaseline: return insets.top
+                case .Top, .CenterY, .TopMargin, .CenterYWithinMargins, .LastBaseline, .FirstBaseline: return insets.top
                 case .Right, .RightMargin: return insets.right
                 case .Bottom, .BottomMargin: return insets.bottom
                 case .Leading, .LeadingMargin: return  (Config.interfaceLayoutDirection == .LeftToRight) ? insets.left : -insets.right
                 case .Trailing, .TrailingMargin: return  (Config.interfaceLayoutDirection == .LeftToRight) ? insets.right : -insets.left
-                case .Width, .Height, .NotAnAttribute: return CGFloat(0)
+                case .Width: return -insets.left + insets.right
+                case .Height: return -insets.top + insets.bottom
+                case .NotAnAttribute: return CGFloat(0)
                 }
             #else
                 switch self {
                 case .Left, .CenterX: return insets.left
-                case .Top, .CenterY, .Baseline: return insets.top
+                case .Top, .CenterY, .LastBaseline: return insets.top
                 case .Right: return insets.right
                 case .Bottom: return insets.bottom
                 case .Leading: return  (Config.interfaceLayoutDirection == .LeftToRight) ? insets.left : -insets.right
                 case .Trailing: return  (Config.interfaceLayoutDirection == .LeftToRight) ? insets.right : -insets.left
-                case .Width, .Height, .NotAnAttribute: return CGFloat(0)
+                case .Width: return -insets.left + insets.right
+                case .Height: return -insets.top + insets.bottom
+                case .NotAnAttribute: return CGFloat(0)
                 case .FirstBaseline: return insets.bottom
                 }
             #endif

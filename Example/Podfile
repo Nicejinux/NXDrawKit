@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'NXDrawKit_Example' do
   pod 'NXDrawKit', :path => '../'
-  pod 'SnapKit'
+  pod 'SnapKit', '= 0.22.0'
   pod 'RSKImageCropper'
 
   target 'NXDrawKit_Tests' do
