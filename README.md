@@ -198,7 +198,7 @@ public extension UIImage {
 
 
 #Version History
-* 0.3.5
+* 0.3.6
     * UPDATE: Support XCode8, Swift 2.3
 * 0.3.4
     * FIX: Removing background image issue 
