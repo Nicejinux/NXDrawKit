@@ -13,22 +13,22 @@ class CircleButton: UIButton
     var color: UIColor!
     var opacity: CGFloat!
     var diameter: CGFloat!
-    override var isSelected: Bool {
+    override var selected: Bool {
         willSet(selectedValue) {
-            super.isSelected = selectedValue
-            let isBright = self.color.isEqual(UIColor.white) || self.color.isEqual(UIColor.clear)
-            let selectedColor = !self.isEnabled ? UIColor.clear : isBright ? UIColor.gray : UIColor.white
-            self.layer.borderColor = self.isSelected ? selectedColor.cgColor : self.color?.cgColor
+            super.selected = selectedValue
+            let isBright = self.color.isEqual(UIColor.whiteColor()) || self.color.isEqual(UIColor.clearColor())
+            let selectedColor = !self.enabled ? UIColor.clearColor() : isBright ? UIColor.grayColor() : UIColor.whiteColor()
+            self.layer.borderColor = self.selected ? selectedColor.CGColor : self.color?.CGColor
         }
     }
     
-    override var isEnabled: Bool {
+    override var enabled: Bool {
         willSet(enabledValue) {
-            super.isEnabled = enabledValue
+            super.enabled = enabledValue
             
             // if button is disabled, selected color should be changed to clear color
-            let selected = self.isSelected
-            self.isSelected = selected
+            let selected = self.selected
+            self.selected = selected
         }
     }
     
@@ -42,33 +42,33 @@ class CircleButton: UIButton
         super.init(coder: aDecoder)
     }
 
-    internal func update(_ color: UIColor) {
+    internal func update(color: UIColor) {
         self.color = color
-        self.isSelected = super.isSelected
-        self.backgroundColor = color.withAlphaComponent(self.opacity!)
+        self.selected = super.selected
+        self.backgroundColor = color.colorWithAlphaComponent(self.opacity!)
     }
 
     // MARK: - Private Methods
-    fileprivate func initialize(_ diameter: CGFloat, color: UIColor, opacity: CGFloat) {
+    private func initialize(diameter: CGFloat, color: UIColor, opacity: CGFloat) {
         self.color = color
         self.opacity = opacity
         self.diameter = diameter
         
         self.layer.cornerRadius = diameter / 2.0
-        self.layer.borderColor = color.cgColor
+        self.layer.borderColor = color.CGColor
         self.layer.borderWidth = (diameter > 3) ? 3.0 : diameter / 3.0
-        self.backgroundColor = color.withAlphaComponent(opacity)
+        self.backgroundColor = color.colorWithAlphaComponent(opacity)
         
-        if self.color.isEqual(UIColor.clear) {
-            self.setBackgroundImage(self.image("icon_eraser"), for: UIControlState())
+        if self.color.isEqual(UIColor.clearColor()) {
+            self.setBackgroundImage(self.image("icon_eraser"), forState: .Normal)
         }
     }
     
-    fileprivate func image(_ name: String) -> UIImage? {
-        let podBundle = Bundle(for: self.classForCoder)
-        if let bundleURL = podBundle.url(forResource: "NXDrawKit", withExtension: "bundle") {
-            if let bundle = Bundle(url: bundleURL) {
-                let image = UIImage(named: name, in: bundle, compatibleWith: nil)
+    private func image(name: String) -> UIImage? {
+        let podBundle = NSBundle(forClass: self.classForCoder)
+        if let bundleURL = podBundle.URLForResource("NXDrawKit", withExtension: "bundle") {
+            if let bundle = NSBundle(URL: bundleURL) {
+                let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
                 return image
             }
         }

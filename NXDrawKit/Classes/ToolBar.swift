@@ -9,19 +9,19 @@
 import UIKit
 import SnapKit
 
-open class ToolBar: UIView
+public class ToolBar: UIView
 {
-    open weak var undoButton: UIButton?
-    open weak var redoButton: UIButton?
-    open weak var saveButton: UIButton?
-    open weak var loadButton: UIButton?
-    open weak var clearButton: UIButton?
+    public weak var undoButton: UIButton?
+    public weak var redoButton: UIButton?
+    public weak var saveButton: UIButton?
+    public weak var loadButton: UIButton?
+    public weak var clearButton: UIButton?
     
-    fileprivate weak var lineView: UIView?
+    private weak var lineView: UIView?
 
     // MARK: - Public Methods
     public init() {
-        super.init(frame: CGRect.zero)
+        super.init(frame: CGRectZero)
         self.initialize()
     }
     
@@ -29,13 +29,13 @@ open class ToolBar: UIView
         super.init(coder: aDecoder)
     }
     
-    fileprivate func initialize() {
+    private func initialize() {
         self.setupViews()
         self.setupLayout()
     }
     
     // MARK: - Private Methods
-    fileprivate func setupViews() {
+    private func setupViews() {
         self.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
         
         let lineView = UIView()
@@ -64,70 +64,70 @@ open class ToolBar: UIView
         self.loadButton = button
     }
     
-    fileprivate func setupLayout() {
-        self.lineView?.snp.makeConstraints({ (make) in
+    private func setupLayout() {
+        self.lineView?.snp_makeConstraints(closure: { (make) in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(1)
         })
         
-        self.undoButton?.snp.makeConstraints({ (make) in
+        self.undoButton?.snp_makeConstraints(closure: { (make) in
             make.left.equalTo(self).offset(15)
             make.centerY.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.05)
-            make.height.equalTo(self.undoButton!.snp.width)
+            make.height.equalTo(self.undoButton!.snp_width)
         })
         
-        self.redoButton?.snp.makeConstraints({ (make) in
-            make.left.equalTo(self.undoButton!.snp.right).offset(20)
+        self.redoButton?.snp_makeConstraints(closure: { (make) in
+            make.left.equalTo(self.undoButton!.snp_right).offset(20)
             make.centerY.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.05)
-            make.height.equalTo(self.redoButton!.snp.width)
+            make.height.equalTo(self.redoButton!.snp_width)
         })
         
-        self.saveButton?.snp.makeConstraints({ (make) in
+        self.saveButton?.snp_makeConstraints(closure: { (make) in
             make.right.equalTo(self).offset(-15)
             make.centerY.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.saveButton!.snp.width)
+            make.height.equalTo(self.saveButton!.snp_width)
         })
         
-        self.clearButton?.snp.makeConstraints({ (make) in
-            make.right.equalTo((self.saveButton?.snp.left)!).offset(-15)
+        self.clearButton?.snp_makeConstraints(closure: { (make) in
+            make.right.equalTo((self.saveButton?.snp_left)!).offset(-15)
             make.centerY.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.clearButton!.snp.width)
+            make.height.equalTo(self.clearButton!.snp_width)
         })
 
-        self.loadButton?.snp.makeConstraints({ (make) in
+        self.loadButton?.snp_makeConstraints(closure: { (make) in
             make.center.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.loadButton!.snp.width)
+            make.height.equalTo(self.loadButton!.snp_width)
         })
     }
     
-    fileprivate func button(_ title: String? = nil, iconName: String? = nil) -> UIButton {
+    private func button(title: String? = nil, iconName: String? = nil) -> UIButton {
         let button = UIButton()
-        button.backgroundColor = UIColor.clear
+        button.backgroundColor = UIColor.clearColor()
         
         if title != nil {
-            let scale = UIScreen.main.scale
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12 + scale)
-            button.setTitle(title, for: UIControlState())
-            button.setTitleColor(UIColor.white, for: UIControlState())
-            button.setTitleColor(UIColor.gray, for: .disabled)
+            let scale = UIScreen.mainScreen().scale
+            button.titleLabel?.font = UIFont.boldSystemFontOfSize(12 + scale)
+            button.setTitle(title, forState: .Normal)
+            button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
         }
 
         if iconName != nil {
-            let podBundle = Bundle(for: self.classForCoder)
-            if let bundleURL = podBundle.url(forResource: "NXDrawKit", withExtension: "bundle") {
-                if let bundle = Bundle(url: bundleURL) {
-                    let image = UIImage(named: iconName!, in: bundle, compatibleWith: nil)
-                    button.setImage(image, for: UIControlState())
+            let podBundle = NSBundle(forClass: self.classForCoder)
+            if let bundleURL = podBundle.URLForResource("NXDrawKit", withExtension: "bundle") {
+                if let bundle = NSBundle(URL: bundleURL) {
+                    let image = UIImage(named: iconName!, inBundle: bundle, compatibleWithTraitCollection: nil)
+                    button.setImage(image, forState: .Normal)
                 }
             }
         }
         
-        button.isEnabled = false
+        button.enabled = false
         
         return button
     }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NXDrawKit'
-  s.version          = '0.4.0'
+  s.version          = '0.4.1'
   s.summary          = 'NXDrawKit is a simple and easy but useful drawing kit for iPhone'
   s.description      = 'NXDrawKit is a set of classes designed to use drawable view easily.'
 
@@ -29,5 +29,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'SnapKit', '~> 3.0.0'
+  s.dependency 'SnapKit', '= 0.22.0'
 end
