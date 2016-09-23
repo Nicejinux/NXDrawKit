@@ -28,21 +28,48 @@
 #endif
 
 
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
+public protocol ConstraintPriorityTarget {
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
-        }
+    var constraintPriorityTargetValue: Float { get }
+    
+}
+
+extension Int: ConstraintPriorityTarget {
+    
+    public var constraintPriorityTargetValue: Float {
+        return Float(self)
     }
+    
+}
+
+extension UInt: ConstraintPriorityTarget {
+    
+    public var constraintPriorityTargetValue: Float {
+        return Float(self)
+    }
+    
+}
+
+extension Float: ConstraintPriorityTarget {
+    
+    public var constraintPriorityTargetValue: Float {
+        return self
+    }
+    
+}
+
+extension Double: ConstraintPriorityTarget {
+    
+    public var constraintPriorityTargetValue: Float {
+        return Float(self)
+    }
+    
+}
+
+extension CGFloat: ConstraintPriorityTarget {
+    
+    public var constraintPriorityTargetValue: Float {
+        return Float(self)
+    }
+    
 }

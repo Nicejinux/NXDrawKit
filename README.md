@@ -9,6 +9,11 @@
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](http://cocoapods.org/pods/NXDrawKit)
 [![Platform](https://img.shields.io/cocoapods/p/NXDrawKit.svg?style=flat)](http://cocoapods.org/pods/NXDrawKit)
 [![Swift](https://img.shields.io/badge/Swift-2.3-green.svg)](http://cocoapods.org/pods/NXDrawKit)
+[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](http://cocoapods.org/pods/NXDrawKit)
+
+#### ⚠️ **To use with Swift 2.2 please ensure you are using == 0.3.4** ⚠️ 
+#### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.3.6** ⚠️ 
+#### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.4.0** ⚠️ 
 
 #Purpose
 It's just started for my personal app for iPhone.
@@ -198,6 +203,8 @@ public extension UIImage {
 
 
 #Version History
+* 0.4.0
+    * UPDATE: Support XCode8, Swift 3.0
 * 0.3.6
     * UPDATE: Support XCode8, Swift 2.3
 * 0.3.4

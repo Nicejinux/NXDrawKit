@@ -8,17 +8,17 @@
 
 import UIKit
 
-public class Brush: NSObject {
-    public var color: UIColor = UIColor.blackColor() {
+open class Brush: NSObject {
+    open var color: UIColor = UIColor.black {
         willSet(colorValue) {
             color = colorValue
-            isEraser = color.isEqual(UIColor.clearColor())
-            blendMode = isEraser ? .Clear : .Normal
+            isEraser = color.isEqual(UIColor.clear)
+            blendMode = isEraser ? .clear : .normal
         }
     }
-    public var width: CGFloat = 5.0
-    public var alpha: CGFloat = 1.0
+    open var width: CGFloat = 5.0
+    open var alpha: CGFloat = 1.0
     
-    internal var blendMode: CGBlendMode = .Normal
+    internal var blendMode: CGBlendMode = .normal
     internal var isEraser: Bool = false
 }

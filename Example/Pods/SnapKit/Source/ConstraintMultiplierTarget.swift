@@ -28,21 +28,48 @@
 #endif
 
 
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
+public protocol ConstraintMultiplierTarget {
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
-        }
+    var constraintMultiplierTargetValue: CGFloat { get }
+    
+}
+
+extension Int: ConstraintMultiplierTarget {
+    
+    public var constraintMultiplierTargetValue: CGFloat {
+        return CGFloat(self)
     }
+    
+}
+
+extension UInt: ConstraintMultiplierTarget {
+    
+    public var constraintMultiplierTargetValue: CGFloat {
+        return CGFloat(self)
+    }
+    
+}
+
+extension Float: ConstraintMultiplierTarget {
+    
+    public var constraintMultiplierTargetValue: CGFloat {
+        return CGFloat(self)
+    }
+    
+}
+
+extension Double: ConstraintMultiplierTarget {
+    
+    public var constraintMultiplierTargetValue: CGFloat {
+        return CGFloat(self)
+    }
+    
+}
+
+extension CGFloat: ConstraintMultiplierTarget {
+    
+    public var constraintMultiplierTargetValue: CGFloat {
+        return self
+    }
+    
 }

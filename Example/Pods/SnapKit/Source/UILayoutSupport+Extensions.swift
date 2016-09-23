@@ -23,26 +23,14 @@
 
 #if os(iOS) || os(tvOS)
     import UIKit
-#else
-    import AppKit
 #endif
 
-
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
-        }
+@available(iOS 8.0, *)
+public extension ConstraintLayoutSupport {
+    
+    public var snp: ConstraintLayoutSupportDSL {
+        return ConstraintLayoutSupportDSL(support: self)
     }
+    
 }

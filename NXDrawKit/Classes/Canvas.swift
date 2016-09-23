@@ -10,41 +10,41 @@ import UIKit
 
 @objc public protocol CanvasDelegate
 {
-    optional func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?)
-    optional func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?)
+    @objc optional func canvas(_ canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?)
+    @objc optional func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?)
     
     func brush() -> Brush?
 }
 
 
-public class Canvas: UIView, UITableViewDelegate
+open class Canvas: UIView, UITableViewDelegate
 {
-    public weak var delegate: CanvasDelegate?
+    open weak var delegate: CanvasDelegate?
     
-    private var canvasId: String?
+    fileprivate var canvasId: String?
     
-    private var mainImageView = UIImageView()
-    private var tempImageView = UIImageView()
-    private var backgroundImageView = UIImageView()
+    fileprivate var mainImageView = UIImageView()
+    fileprivate var tempImageView = UIImageView()
+    fileprivate var backgroundImageView = UIImageView()
     
-    private var brush = Brush()
-    private let session = Session()
-    private var drawing = Drawing()
-    private let path = UIBezierPath()
-    private let scale = UIScreen.mainScreen().scale
+    fileprivate var brush = Brush()
+    fileprivate let session = Session()
+    fileprivate var drawing = Drawing()
+    fileprivate let path = UIBezierPath()
+    fileprivate let scale = UIScreen.main.scale
 
-    private var saved = false
-    private var pointMoved = false
-    private var pointIndex = 0
-    private var points = [CGPoint?](count: 5, repeatedValue: CGPointZero)
+    fileprivate var saved = false
+    fileprivate var pointMoved = false
+    fileprivate var pointIndex = 0
+    fileprivate var points = [CGPoint?](repeating: CGPoint.zero, count: 5)
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     public init(canvasId: String? = nil, backgroundImage image: UIImage? = nil) {
-        super.init(frame: CGRectZero)
-        self.path.lineCapStyle = .Round
+        super.init(frame: CGRect.zero)
+        self.path.lineCapStyle = .round
         self.canvasId = canvasId
         self.backgroundImageView.image = image
         if image != nil {
@@ -54,27 +54,27 @@ public class Canvas: UIView, UITableViewDelegate
     }
     
     // MARK: - Private Methods
-    private func initialize() {
-        self.backgroundColor = UIColor.whiteColor()
+    fileprivate func initialize() {
+        self.backgroundColor = UIColor.white
         
         self.addSubview(self.backgroundImageView)
-        self.backgroundImageView.contentMode = .ScaleAspectFit
-        self.backgroundImageView.snp_makeConstraints(closure: { (make) in
+        self.backgroundImageView.contentMode = .scaleAspectFit
+        self.backgroundImageView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self)
         })
         
         self.addSubview(self.mainImageView)
-        self.mainImageView.snp_makeConstraints(closure: { (make) in
+        self.mainImageView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self)
         })
 
         self.addSubview(self.tempImageView)
-        self.tempImageView.snp_makeConstraints(closure: { (make) in
+        self.tempImageView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self)
         })
     }
     
-    private func compare(image1: UIImage?, isEqualTo image2: UIImage?) -> Bool {
+    fileprivate func compare(_ image1: UIImage?, isEqualTo image2: UIImage?) -> Bool {
         if (image1 == nil && image2 == nil) {
             return true
         } else if (image1 == nil || image2 == nil) {
@@ -88,51 +88,51 @@ public class Canvas: UIView, UITableViewDelegate
             return false
         }
 
-        return data1!.isEqual(data2)
+        return (data1! == data2)
     }
     
-    private func currentDrawing() -> Drawing {
+    fileprivate func currentDrawing() -> Drawing {
         return Drawing(stroke: self.mainImageView.image, background: self.backgroundImageView.image)
     }
     
-    private func updateByLastSession() {
+    fileprivate func updateByLastSession() {
         let lastSession = self.session.lastSession()
         self.mainImageView.image = lastSession?.stroke
         self.backgroundImageView.image = lastSession?.background
     }
     
-    private func didUpdateCanvas() {
+    fileprivate func didUpdateCanvas() {
         let mergedImage = self.mergePathsAndImages()
         let currentDrawing = self.currentDrawing()
         self.delegate?.canvas?(self, didUpdateDrawing: currentDrawing, mergedImage: mergedImage)
     }
     
-    private func didSaveCanvas() {
+    fileprivate func didSaveCanvas() {
         let mergedImage = self.mergePathsAndImages()
         self.delegate?.canvas?(self, didSaveDrawing: self.drawing, mergedImage: mergedImage)
     }
     
-    private func isStrokeEqual() -> Bool {
+    fileprivate func isStrokeEqual() -> Bool {
         return self.compare(self.drawing.stroke, isEqualTo: self.mainImageView.image)
     }
     
-    private func isBackgroundEqual() -> Bool {
+    fileprivate func isBackgroundEqual() -> Bool {
         return self.compare(self.drawing.background, isEqualTo: self.backgroundImageView.image)
     }
     
 
     // MARK: - Override Methods
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.saved = false
         self.pointMoved = false
         self.pointIndex = 0
         self.brush = (self.delegate?.brush())!
         
         let touch = touches.first!
-        self.points[0] = touch.locationInView(self)
+        self.points[0] = touch.location(in: self)
     }
     
-    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         /*
          * Smooth Freehand Drawing on iOS
          * http://code.tutsplus.com/tutorials/ios-sdk_freehand-drawing--mobile-13164
@@ -140,7 +140,7 @@ public class Canvas: UIView, UITableViewDelegate
          */
 
         let touch = touches.first!
-        let currentPoint = touch.locationInView(self)
+        let currentPoint = touch.location(in: self)
         self.pointMoved = true
         self.pointIndex += 1
         self.points[self.pointIndex] = currentPoint
@@ -148,11 +148,11 @@ public class Canvas: UIView, UITableViewDelegate
         if self.pointIndex == 4 {
             // move the endpoint to the middle of the line joining the second control point of the first Bezier segment
             // and the first control point of the second Bezier segment
-            self.points[3] = CGPointMake((self.points[2]!.x + self.points[4]!.x)/2.0, (self.points[2]!.y + self.points[4]!.y) / 2.0)
+            self.points[3] = CGPoint(x: (self.points[2]!.x + self.points[4]!.x)/2.0, y: (self.points[2]!.y + self.points[4]!.y) / 2.0)
 
             // add a cubic Bezier from pt[0] to pt[3], with control points pt[1] and pt[2]
-            self.path.moveToPoint(self.points[0]!)
-            self.path.addCurveToPoint(self.points[3]!, controlPoint1: self.points[1]!, controlPoint2: self.points[2]!)
+            self.path.move(to: self.points[0]!)
+            self.path.addCurve(to: self.points[3]!, controlPoint1: self.points[1]!, controlPoint2: self.points[2]!)
             
             // replace points and get ready to handle the next segment
             self.points[0] = self.points[3]
@@ -163,14 +163,14 @@ public class Canvas: UIView, UITableViewDelegate
         self.strokePath()
     }
     
-    public override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.touchesEnded(touches, withEvent: event)
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.touchesEnded(touches, with: event)
     }
     
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !self.pointMoved {   // touchesBegan -> touchesEnded : just touched
-            self.path.moveToPoint(self.points[0]!)
-            self.path.addLineToPoint(self.points[0]!)
+            self.path.move(to: self.points[0]!)
+            self.path.addLine(to: self.points[0]!)
             self.strokePath()
         }
         
@@ -181,18 +181,18 @@ public class Canvas: UIView, UITableViewDelegate
         self.pointIndex = 0
     }
     
-    private func strokePath() {
+    fileprivate func strokePath() {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
         self.path.lineWidth = (self.brush.width / self.scale)
-        self.brush.color.colorWithAlphaComponent(self.brush.alpha).setStroke()
+        self.brush.color.withAlphaComponent(self.brush.alpha).setStroke()
         
         if self.brush.isEraser {
             // should draw on screen for being erased
-            self.mainImageView.image?.drawInRect(self.bounds)
+            self.mainImageView.image?.draw(in: self.bounds)
         }
         
-        self.path.strokeWithBlendMode(brush.blendMode, alpha: 1)
+        self.path.stroke(with: brush.blendMode, alpha: 1)
 
         let targetImageView = self.brush.isEraser ? self.mainImageView : self.tempImageView
         targetImageView.image = UIGraphicsGetImageFromCurrentImageContext()
@@ -200,11 +200,11 @@ public class Canvas: UIView, UITableViewDelegate
         UIGraphicsEndImageContext()
     }
     
-    private func mergePaths() {
+    fileprivate func mergePaths() {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
-        self.mainImageView.image?.drawInRect(self.bounds)
-        self.tempImageView.image?.drawInRect(self.bounds)
+        self.mainImageView.image?.draw(in: self.bounds)
+        self.tempImageView.image?.draw(in: self.bounds)
         
         self.mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         self.session.append(self.currentDrawing())
@@ -213,15 +213,15 @@ public class Canvas: UIView, UITableViewDelegate
         UIGraphicsEndImageContext()
     }
     
-    private func mergePathsAndImages() -> UIImage {
+    fileprivate func mergePathsAndImages() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
         
         if self.backgroundImageView.image != nil {
             let rect = self.centeredBackgroundImageRect()
-            self.backgroundImageView.image?.drawInRect(rect)            // draw background image
+            self.backgroundImageView.image?.draw(in: rect)            // draw background image
         }
         
-        self.mainImageView.image?.drawInRect(self.bounds)               // draw stroke
+        self.mainImageView.image?.draw(in: self.bounds)               // draw stroke
         
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()   // merge
         
@@ -230,13 +230,13 @@ public class Canvas: UIView, UITableViewDelegate
         return mergedImage!
     }
     
-    private func centeredBackgroundImageRect() -> CGRect {
-        if CGSizeEqualToSize(self.frame.size, (self.backgroundImageView.image?.size)!) {
+    fileprivate func centeredBackgroundImageRect() -> CGRect {
+        if self.frame.size.equalTo((self.backgroundImageView.image?.size)!) {
             return self.frame
         }
         
-        let selfWidth = CGRectGetWidth(self.frame)
-        let selfHeight = CGRectGetHeight(self.frame)
+        let selfWidth = self.frame.width
+        let selfHeight = self.frame.height
         let imageWidth = self.backgroundImageView.image?.size.width
         let imageHeight = self.backgroundImageView.image?.size.height
         
@@ -246,8 +246,8 @@ public class Canvas: UIView, UITableViewDelegate
         let resizedWidth = scale * imageWidth!
         let resizedHeight = scale * imageHeight!
         
-        var rect = CGRectZero
-        rect.size = CGSizeMake(resizedWidth, resizedHeight)
+        var rect = CGRect.zero
+        rect.size = CGSize(width: resizedWidth, height: resizedHeight)
         
         if selfWidth > resizedWidth {
             rect.origin.x = (selfWidth - resizedWidth) / 2
@@ -262,54 +262,54 @@ public class Canvas: UIView, UITableViewDelegate
     
     
     // MARK: - Public Methods
-    public func update(backgroundImage: UIImage?) {
+    open func update(_ backgroundImage: UIImage?) {
         self.backgroundImageView.image = backgroundImage
         self.session.append(self.currentDrawing())
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
     
-    public func undo() {
+    open func undo() {
         self.session.undo()
         self.updateByLastSession()
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
 
-    public func redo() {
+    open func redo() {
         self.session.redo()
         self.updateByLastSession()
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
     
-    public func clear() {
+    open func clear() {
         self.session.clear()
         self.updateByLastSession()
         self.saved = true
         self.didUpdateCanvas()
     }
     
-    public func save() {
+    open func save() {
         self.drawing.stroke = self.mainImageView.image?.copy() as? UIImage
         self.drawing.background = self.backgroundImageView.image
         self.saved = true
         self.didSaveCanvas()
     }
     
-    public func canUndo() -> Bool {
+    open func canUndo() -> Bool {
         return self.session.canUndo()
     }
 
-    public func canRedo() -> Bool {
+    open func canRedo() -> Bool {
         return self.session.canRedo()
     }
 
-    public func canClear() -> Bool {
+    open func canClear() -> Bool {
         return self.session.canReset()
     }
 
-    public func canSave() -> Bool {
+    open func canSave() -> Bool {
         return !(self.isStrokeEqual() && self.isBackgroundEqual())
     }
 }

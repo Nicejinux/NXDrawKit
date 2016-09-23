@@ -28,21 +28,29 @@
 #endif
 
 
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
+@available(iOS 8.0, *)
+public struct ConstraintLayoutSupportDSL: ConstraintDSL {
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
-        }
+    public var target: AnyObject? {
+        return self.support
+    }
+    
+    internal let support: ConstraintLayoutSupport
+    
+    internal init(support: ConstraintLayoutSupport) {
+        self.support = support
+        
+    }
+    
+    public var top: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.top)
+    }
+    
+    public var bottom: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.bottom)
+    }
+    
+    public var height: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.height)
     }
 }

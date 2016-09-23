@@ -28,21 +28,42 @@
 #endif
 
 
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
+public protocol ConstraintOffsetTarget: ConstraintConstantTarget {
+}
+
+extension Int: ConstraintOffsetTarget {
+}
+
+extension UInt: ConstraintOffsetTarget {
+}
+
+extension Float: ConstraintOffsetTarget {
+}
+
+extension Double: ConstraintOffsetTarget {
+}
+
+extension CGFloat: ConstraintOffsetTarget {
+}
+
+extension ConstraintOffsetTarget {
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
+    internal var constraintOffsetTargetValue: CGFloat {
+        let offset: CGFloat
+        if let amount = self as? Float {
+            offset = CGFloat(amount)
+        } else if let amount = self as? Double {
+            offset = CGFloat(amount)
+        } else if let amount = self as? CGFloat {
+            offset = CGFloat(amount)
+        } else if let amount = self as? Int {
+            offset = CGFloat(amount)
+        } else if let amount = self as? UInt {
+            offset = CGFloat(amount)
+        } else {
+            offset = 0.0
         }
+        return offset
     }
+    
 }

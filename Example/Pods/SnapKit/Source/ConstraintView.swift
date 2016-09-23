@@ -28,21 +28,8 @@
 #endif
 
 
-internal enum ConstraintRelation: Int {
-    case equal = 1
-    case lessThanOrEqual
-    case greaterThanOrEqual
-    
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .equal:
-                return .equal
-            case .lessThanOrEqual:
-                return .lessThanOrEqual
-            case .greaterThanOrEqual:
-                return .greaterThanOrEqual
-            }
-        }
-    }
-}
+#if os(iOS) || os(tvOS)
+    public typealias ConstraintView = UIView
+#else
+    public typealias ConstraintView = NSView
+#endif
