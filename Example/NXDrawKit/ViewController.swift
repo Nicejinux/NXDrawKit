@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import NXDrawKit
 import RSKImageCropper
 import AVFoundation
@@ -42,13 +41,15 @@ class ViewController: UIViewController
         paletteView.setup()
         self.view.addSubview(paletteView)
         self.paletteView = paletteView
-        self.paletteView?.snp_makeConstraints(closure: { (make) in
-            make.left.right.bottom.equalTo(self.view)
-        })
+        let paletteHeight = paletteView.paletteHeight()
+        paletteView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - paletteHeight, CGRectGetWidth(self.view.frame), paletteHeight)
     }
     
     private func setupToolBar() {
+        let height = CGRectGetHeight((self.paletteView?.frame)!) * 0.25
+        let startY = CGRectGetHeight(self.view.frame) - CGRectGetHeight((paletteView?.frame)!) - height
         let toolBar = ToolBar()
+        toolBar.frame = CGRectMake(0, startY, CGRectGetWidth(self.view.frame), height)
         toolBar.undoButton?.addTarget(self, action: #selector(ViewController.onClickUndoButton), forControlEvents: .TouchUpInside)
         toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), forControlEvents: .TouchUpInside)
         toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), forControlEvents: .TouchUpInside)
@@ -59,16 +60,12 @@ class ViewController: UIViewController
         toolBar.loadButton?.enabled = true
         self.view.addSubview(toolBar)
         self.toolBar = toolBar
-        self.toolBar?.snp_makeConstraints(closure: { (make) in
-            make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.paletteView!.snp_top)
-            make.height.equalTo(self.paletteView!).multipliedBy(0.25)
-        })
     }
     
     private func setupCanvas() {
 //        let canvasView = Canvas(backgroundImage: UIImage.init(named: "frame")!) // You can init with custom background image
         let canvasView = Canvas()
+        canvasView.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.width - 40)
         canvasView.delegate = self
         canvasView.layer.borderColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 0.8).CGColor
         canvasView.layer.borderWidth = 2.0
@@ -76,12 +73,6 @@ class ViewController: UIViewController
         canvasView.clipsToBounds = true
         self.view.addSubview(canvasView)
         self.canvasView = canvasView
-        self.canvasView?.snp_makeConstraints(closure: { (make) in
-            make.top.equalTo(self.view).offset(50)
-            make.left.equalTo(self.view).offset(20)
-            make.right.equalTo(self.view).offset(-20)
-            make.height.equalTo(CGRectGetWidth(self.view.frame) - 40)
-        })
     }
     
     private func updateToolBarButtonStatus(canvas: Canvas) {

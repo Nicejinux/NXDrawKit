@@ -1,23 +1,19 @@
 PODS:
-  - NXDrawKit (0.3.4):
-    - SnapKit (~> 0.22.0)
+  - NXDrawKit (0.4.1)
   - RSKImageCropper (1.5.1)
-  - SnapKit (0.22.0)
 
 DEPENDENCIES:
   - NXDrawKit (from `../`)
   - RSKImageCropper
-  - SnapKit (= 0.22.0)
 
 EXTERNAL SOURCES:
   NXDrawKit:
     :path: ../
 
 SPEC CHECKSUMS:
-  NXDrawKit: 91ae91a0aef3df0d634ce7139066b5525c15213f
+  NXDrawKit: ea88790407ec5b1954a3d9ba5f22bb3107a5d162
   RSKImageCropper: edd65fedb3734332818deb139906d6b7f54b8a44
-  SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
 
-PODFILE CHECKSUM: 1a8bb3b2c9390b051d12bdcc2792500e3a5871c4
+PODFILE CHECKSUM: 955efcd96cd70a412d9bfa1dc813fc9904e89beb
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 @objc public protocol PaletteDelegate
 {
@@ -68,43 +67,38 @@ public class Palette: UIView
         self.setupDefaultValues()
     }
     
+    public func paletteHeight() -> CGFloat {
+        return self.totalHeight
+    }
+    
     private func setupColorView() {
         let view = UIView()
         self.addSubview(view)
         self.colorPaletteView = view
         
-        var left: ConstraintItem = self.colorPaletteView!.snp_left
-        var top: ConstraintItem = self.colorPaletteView!.snp_top
         var button: CircleButton?
-        
         for index in 1...12 {
             let color: UIColor = self.color(index)
             button = CircleButton(diameter: self.buttonDiameter, color: color, opacity: 1.0)
+            button?.frame = self.colorButtonRect(index: index, diameter: self.buttonDiameter, padding: self.buttonPadding)
             button?.addTarget(self, action:#selector(Palette.onClickColorPicker(_:)), forControlEvents: .TouchUpInside)
             self.colorPaletteView!.addSubview(button!)
-            button?.snp_makeConstraints(closure: { (make) in
-                make.left.equalTo(left).offset(self.buttonPadding)
-                make.top.equalTo(top).offset(self.buttonPadding)
-                make.size.equalTo(CGSizeMake(self.buttonDiameter, self.buttonDiameter))
-            })
-
-            if (index) % self.columnCount == 0 {
-                left = self.colorPaletteView!.snp_left
-                top = button!.snp_bottom
-                self.totalHeight += self.buttonDiameter + self.buttonPadding
-            } else {
-                left = button!.snp_right
-            }
-            
             self.colorButtonList.append(button!)
         }
         
-        self.totalHeight += self.buttonPadding;
-        self.colorPaletteView?.snp_makeConstraints(closure: { (make) in
-            make.top.left.equalTo(self)
-            make.right.equalTo(button!.snp_right).offset(self.buttonPadding)
-            make.height.equalTo(self.totalHeight)
-        })
+        self.totalHeight = CGRectGetMaxY(button!.frame) + self.buttonPadding;
+        self.colorPaletteView?.frame = CGRectMake(0, 0, CGRectGetMaxX(button!.frame) + self.buttonPadding, self.totalHeight)
+    }
+    
+    private func colorButtonRect(index index: NSInteger, diameter: CGFloat, padding: CGFloat) -> CGRect {
+        var rect: CGRect = CGRectZero
+        let indexValue = index - 1
+        let count = self.columnCount
+        rect.origin.x = (CGFloat(indexValue % count) * diameter) + padding + (CGFloat(indexValue % count) * padding)
+        rect.origin.y = (CGFloat(indexValue / count) * diameter) + padding + (CGFloat(indexValue / count) * padding)
+        rect.size = CGSizeMake(diameter, diameter)
+        
+        return rect
     }
     
     private func setupAlphaView() {
@@ -112,30 +106,28 @@ public class Palette: UIView
         self.addSubview(view)
         self.alphaPaletteView = view
         
-        var top: ConstraintItem = self.alphaPaletteView!.snp_top
         var button: CircleButton?
-
         for index in (1...3).reverse() {
             let opacity = self.opacity(index)
             button = CircleButton(diameter: buttonDiameter, color: UIColor.blackColor(), opacity: opacity)
+            button?.frame = self.alphaButtonRect(index: index, diameter: self.buttonDiameter, padding: self.buttonPadding)
             self.alphaPaletteView!.addSubview(button!)
             button?.addTarget(self, action: #selector(Palette.onClickAlphaPicker(_:)), forControlEvents: .TouchUpInside)
-            button?.snp_makeConstraints(closure: { (make) in
-                make.left.equalTo(self.alphaPaletteView!).offset(self.buttonPadding)
-                make.top.equalTo(top).offset(self.buttonPadding)
-                make.size.equalTo(CGSizeMake(self.buttonDiameter, self.buttonDiameter))
-            })
-            
-            top = button!.snp_bottom
             self.alphaButtonList.append(button!)
         }
         
-        self.alphaPaletteView?.snp_makeConstraints(closure: { (make) in
-            make.left.equalTo(self.colorPaletteView!.snp_right).offset(self.buttonPadding)
-            make.top.equalTo(self)
-            make.right.equalTo(button!.snp_right).offset(self.buttonPadding)
-            make.height.equalTo(self.colorPaletteView!)
-        })
+        let startX = CGRectGetMaxX((self.colorPaletteView?.frame)!)
+        self.alphaPaletteView?.frame = CGRectMake(startX, 0, CGRectGetMaxX(button!.frame) + self.buttonPadding, self.totalHeight)
+    }
+    
+    private func alphaButtonRect(index index: NSInteger, diameter: CGFloat, padding: CGFloat) -> CGRect {
+        var rect: CGRect = CGRectZero
+        let indexValue = index - 1
+        rect.origin.x = padding
+        rect.origin.y = CGFloat(indexValue) * diameter + padding + (CGFloat(indexValue) * padding)
+        rect.size = CGSizeMake(diameter, diameter)
+        
+        return rect
     }
     
     private func setupWidthView() {
@@ -143,31 +135,32 @@ public class Palette: UIView
         self.addSubview(view)
         self.widthPaletteView = view
         
-        var bottom: ConstraintItem = self.widthPaletteView!.snp_bottom
         var button: CircleButton?
-        for index in (1...4).reverse() {
-            let buttonDiameter = self.width(index)
+        var lastY: CGFloat = 4
+        for index in 1...4 {
+            let buttonDiameter = self.brushWidth(index)
             button = CircleButton(diameter: buttonDiameter, color: UIColor.blackColor(), opacity: 1)
+            button?.frame = self.widthButtonRect(buttonDiameter, padding: self.buttonPadding, lastY: lastY)
             self.widthPaletteView!.addSubview(button!)
             button?.addTarget(self, action: #selector(Palette.onClickWidthPicker(_:)), forControlEvents: .TouchUpInside)
-            button?.snp_makeConstraints(closure: { (make) in
-                make.bottom.equalTo(bottom).offset(-self.buttonPadding)
-                make.centerX.equalTo(self.widthPaletteView!)
-                make.size.equalTo(CGSizeMake(buttonDiameter, buttonDiameter))
-            })
-            
-            bottom = button!.snp_top
+
+            lastY = CGRectGetMaxY((button?.frame)!)
             self.widthButtonList.append(button!)
         }
         
-        self.widthPaletteView?.snp_makeConstraints(closure: { (make) in
-            make.left.equalTo(self.alphaPaletteView!.snp_right)
-            make.top.equalTo(self)
-            make.width.equalTo(self.alphaPaletteView!)
-            make.height.equalTo(self.colorPaletteView!)
-        })
+        let startX = CGRectGetMaxX((self.alphaPaletteView?.frame)!)
+        self.widthPaletteView?.frame = CGRectMake(startX, 0, CGRectGetMaxX(button!.frame) + self.buttonPadding, self.totalHeight)
     }
     
+    private func widthButtonRect(diameter: CGFloat, padding: CGFloat, lastY: CGFloat) -> CGRect {
+        var rect: CGRect = CGRectZero
+        rect.origin.x = padding + ((self.buttonDiameter - diameter) / 2)
+        rect.origin.y = lastY + padding
+        rect.size = CGSizeMake(diameter, diameter)
+        
+        return rect
+    }
+
     private func setupDefaultValues() {
         var button: CircleButton = self.colorButtonList.first!
         button.selected = true
@@ -177,20 +170,9 @@ public class Palette: UIView
         button.selected = true
         self.brush.alpha = button.opacity!
         
-        button = self.widthButtonList.first!
+        button = self.widthButtonList.last!
         button.selected = true
         self.brush.width = button.diameter!
-    }
-    
-    private func rect(index index: NSInteger, diameter: CGFloat, padding: CGFloat) -> CGRect {
-        var rect: CGRect = CGRectZero
-        let indexValue = CGFloat(index)
-        let count = CGFloat(self.columnCount)
-        rect.origin.x = ((indexValue % count) * diameter) + padding + ((indexValue % count) * padding)
-        rect.origin.y = ((indexValue / count) * diameter) + padding + ((indexValue / count) * padding)
-        rect.size = CGSizeMake(diameter, diameter)
-    
-        return rect
     }
     
     @objc private func onClickColorPicker(button: CircleButton) {
@@ -281,9 +263,9 @@ public class Palette: UIView
         return CGFloat(tag) / 3.0
     }
 
-    private func width(tag: NSInteger) -> CGFloat {
+    private func brushWidth(tag: NSInteger) -> CGFloat {
         if let width = self.delegate?.widthWithTag?(tag) {
-            if 0 > width  || width > self.buttonDiameter{
+            if 0 > width || width > self.buttonDiameter {
                 return self.buttonDiameter * (CGFloat(tag) / 4.0)
             }
             return width

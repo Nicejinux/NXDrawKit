@@ -59,19 +59,13 @@ public class Canvas: UIView, UITableViewDelegate
         
         self.addSubview(self.backgroundImageView)
         self.backgroundImageView.contentMode = .ScaleAspectFit
-        self.backgroundImageView.snp_makeConstraints(closure: { (make) in
-            make.edges.equalTo(self)
-        })
+        self.backgroundImageView.autoresizingMask = [.FlexibleHeight ,.FlexibleWidth]
         
         self.addSubview(self.mainImageView)
-        self.mainImageView.snp_makeConstraints(closure: { (make) in
-            make.edges.equalTo(self)
-        })
+        self.mainImageView.autoresizingMask = [.FlexibleHeight ,.FlexibleWidth]
 
         self.addSubview(self.tempImageView)
-        self.tempImageView.snp_makeConstraints(closure: { (make) in
-            make.edges.equalTo(self)
-        })
+        self.tempImageView.autoresizingMask = [.FlexibleHeight ,.FlexibleWidth]
     }
     
     private func compare(image1: UIImage?, isEqualTo image2: UIImage?) -> Bool {

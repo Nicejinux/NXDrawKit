@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 public class ToolBar: UIView
 {
@@ -42,6 +41,7 @@ public class ToolBar: UIView
         lineView.backgroundColor = UIColor(red: 0.18, green: 0.18, blue: 0.18, alpha: 1.0)
         self.addSubview(lineView)
         self.lineView = lineView
+        self.lineView?.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
         
         var button: UIButton = self.button("Clear")
         self.addSubview(button)
@@ -65,44 +65,27 @@ public class ToolBar: UIView
     }
     
     private func setupLayout() {
-        self.lineView?.snp_makeConstraints(closure: { (make) in
-            make.left.right.bottom.equalTo(self)
-            make.height.equalTo(1)
-        })
+        self.lineView?.frame = CGRectMake(0, self.y - 1, self.width, 1)
         
-        self.undoButton?.snp_makeConstraints(closure: { (make) in
-            make.left.equalTo(self).offset(15)
-            make.centerY.equalTo(self)
-            make.width.equalTo(self).multipliedBy(0.05)
-            make.height.equalTo(self.undoButton!.snp_width)
-        })
-        
-        self.redoButton?.snp_makeConstraints(closure: { (make) in
-            make.left.equalTo(self.undoButton!.snp_right).offset(20)
-            make.centerY.equalTo(self)
-            make.width.equalTo(self).multipliedBy(0.05)
-            make.height.equalTo(self.redoButton!.snp_width)
-        })
-        
-        self.saveButton?.snp_makeConstraints(closure: { (make) in
-            make.right.equalTo(self).offset(-15)
-            make.centerY.equalTo(self)
-            make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.saveButton!.snp_width)
-        })
-        
-        self.clearButton?.snp_makeConstraints(closure: { (make) in
-            make.right.equalTo((self.saveButton?.snp_left)!).offset(-15)
-            make.centerY.equalTo(self)
-            make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.clearButton!.snp_width)
-        })
+        self.undoButton?.frame = CGRectMake(15, 0, self.height * 0.5, self.height * 0.5)
+        self.undoButton?.center = CGPointMake((self.undoButton?.center.x)!, self.height / 2.0)
 
-        self.loadButton?.snp_makeConstraints(closure: { (make) in
-            make.center.equalTo(self)
-            make.width.equalTo(self).multipliedBy(0.1)
-            make.height.equalTo(self.loadButton!.snp_width)
-        })
+        self.redoButton?.frame = CGRectMake(CGRectGetMaxX((self.undoButton?.frame)!) + 20, 0, self.height * 0.5, self.height * 0.5)
+        self.redoButton?.center = CGPointMake((self.redoButton?.center.x)!, self.height / 2.0)
+
+        self.saveButton?.frame = CGRectMake(self.width - (self.width * 0.1) - 15, 0, self.width * 0.1, self.width * 0.1)
+        self.saveButton?.center = CGPointMake((self.saveButton?.center.x)!, self.height / 2.0)
+
+        self.clearButton?.frame = CGRectMake(CGRectGetMinX((self.saveButton?.frame)!) - (self.width * 0.1) - 15, 0, self.width * 0.1, self.width * 0.1)
+        self.clearButton?.center = CGPointMake((self.clearButton?.center.x)!, self.height / 2.0)
+
+        self.loadButton?.frame = CGRectMake(0, 0, self.width * 0.1, self.width * 0.1)
+        self.loadButton?.center = CGPointMake(self.width / 2.0, self.height / 2.0)
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setupLayout()
     }
     
     private func button(title: String? = nil, iconName: String? = nil) -> UIButton {
@@ -110,8 +93,7 @@ public class ToolBar: UIView
         button.backgroundColor = UIColor.clearColor()
         
         if title != nil {
-            let scale = UIScreen.mainScreen().scale
-            button.titleLabel?.font = UIFont.boldSystemFontOfSize(12 + scale)
+            button.titleLabel?.font = UIFont.boldSystemFontOfSize(15 * self.multiflierForDevice())
             button.setTitle(title, forState: .Normal)
             button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
@@ -130,5 +112,15 @@ public class ToolBar: UIView
         button.enabled = false
         
         return button
+    }
+    
+    private func multiflierForDevice() -> CGFloat {
+        if UIScreen.mainScreen().bounds.size.width <= 320 {
+            return 0.75
+        } else if UIScreen.mainScreen().bounds.size.width > 375 {
+            return 1.0
+        } else {
+            return 0.9
+        }
     }
 }
