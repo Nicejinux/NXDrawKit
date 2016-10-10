@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class ToolBar: UIView
+open class ToolBar: UIView
 {
-    public weak var undoButton: UIButton?
-    public weak var redoButton: UIButton?
-    public weak var saveButton: UIButton?
-    public weak var loadButton: UIButton?
-    public weak var clearButton: UIButton?
+    open weak var undoButton: UIButton?
+    open weak var redoButton: UIButton?
+    open weak var saveButton: UIButton?
+    open weak var loadButton: UIButton?
+    open weak var clearButton: UIButton?
     
-    private weak var lineView: UIView?
+    fileprivate weak var lineView: UIView?
 
     // MARK: - Public Methods
     public init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.initialize()
     }
     
@@ -28,20 +28,20 @@ public class ToolBar: UIView
         super.init(coder: aDecoder)
     }
     
-    private func initialize() {
+    fileprivate func initialize() {
         self.setupViews()
         self.setupLayout()
     }
     
     // MARK: - Private Methods
-    private func setupViews() {
+    fileprivate func setupViews() {
         self.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
         
         let lineView = UIView()
         lineView.backgroundColor = UIColor(red: 0.18, green: 0.18, blue: 0.18, alpha: 1.0)
         self.addSubview(lineView)
         self.lineView = lineView
-        self.lineView?.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
+        self.lineView?.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         
         var button: UIButton = self.button("Clear")
         self.addSubview(button)
@@ -64,60 +64,60 @@ public class ToolBar: UIView
         self.loadButton = button
     }
     
-    private func setupLayout() {
-        self.lineView?.frame = CGRectMake(0, self.y - 1, self.width, 1)
+    fileprivate func setupLayout() {
+        self.lineView?.frame = CGRect(x: 0, y: self.y - 1, width: self.width, height: 1)
         
-        self.undoButton?.frame = CGRectMake(15, 0, self.height * 0.5, self.height * 0.5)
-        self.undoButton?.center = CGPointMake((self.undoButton?.center.x)!, self.height / 2.0)
+        self.undoButton?.frame = CGRect(x: 15, y: 0, width: self.height * 0.5, height: self.height * 0.5)
+        self.undoButton?.center = CGPoint(x: (self.undoButton?.center.x)!, y: self.height / 2.0)
 
-        self.redoButton?.frame = CGRectMake(CGRectGetMaxX((self.undoButton?.frame)!) + 20, 0, self.height * 0.5, self.height * 0.5)
-        self.redoButton?.center = CGPointMake((self.redoButton?.center.x)!, self.height / 2.0)
+        self.redoButton?.frame = CGRect(x: (self.undoButton?.frame)!.maxX + 20, y: 0, width: self.height * 0.5, height: self.height * 0.5)
+        self.redoButton?.center = CGPoint(x: (self.redoButton?.center.x)!, y: self.height / 2.0)
 
-        self.saveButton?.frame = CGRectMake(self.width - (self.width * 0.1) - 15, 0, self.width * 0.1, self.width * 0.1)
-        self.saveButton?.center = CGPointMake((self.saveButton?.center.x)!, self.height / 2.0)
+        self.saveButton?.frame = CGRect(x: self.width - (self.width * 0.1) - 15, y: 0, width: self.width * 0.1, height: self.width * 0.1)
+        self.saveButton?.center = CGPoint(x: (self.saveButton?.center.x)!, y: self.height / 2.0)
 
-        self.clearButton?.frame = CGRectMake(CGRectGetMinX((self.saveButton?.frame)!) - (self.width * 0.1) - 15, 0, self.width * 0.1, self.width * 0.1)
-        self.clearButton?.center = CGPointMake((self.clearButton?.center.x)!, self.height / 2.0)
+        self.clearButton?.frame = CGRect(x: (self.saveButton?.frame)!.minX - (self.width * 0.1) - 15, y: 0, width: self.width * 0.1, height: self.width * 0.1)
+        self.clearButton?.center = CGPoint(x: (self.clearButton?.center.x)!, y: self.height / 2.0)
 
-        self.loadButton?.frame = CGRectMake(0, 0, self.width * 0.1, self.width * 0.1)
-        self.loadButton?.center = CGPointMake(self.width / 2.0, self.height / 2.0)
+        self.loadButton?.frame = CGRect(x: 0, y: 0, width: self.width * 0.1, height: self.width * 0.1)
+        self.loadButton?.center = CGPoint(x: self.width / 2.0, y: self.height / 2.0)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.setupLayout()
     }
     
-    private func button(title: String? = nil, iconName: String? = nil) -> UIButton {
+    fileprivate func button(_ title: String? = nil, iconName: String? = nil) -> UIButton {
         let button = UIButton()
-        button.backgroundColor = UIColor.clearColor()
+        button.backgroundColor = UIColor.clear
         
         if title != nil {
-            button.titleLabel?.font = UIFont.boldSystemFontOfSize(15 * self.multiflierForDevice())
-            button.setTitle(title, forState: .Normal)
-            button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15 * self.multiflierForDevice())
+            button.setTitle(title, for: UIControlState())
+            button.setTitleColor(UIColor.white, for: UIControlState())
+            button.setTitleColor(UIColor.gray, for: .disabled)
         }
 
         if iconName != nil {
-            let podBundle = NSBundle(forClass: self.classForCoder)
-            if let bundleURL = podBundle.URLForResource("NXDrawKit", withExtension: "bundle") {
-                if let bundle = NSBundle(URL: bundleURL) {
-                    let image = UIImage(named: iconName!, inBundle: bundle, compatibleWithTraitCollection: nil)
-                    button.setImage(image, forState: .Normal)
+            let podBundle = Bundle(for: self.classForCoder)
+            if let bundleURL = podBundle.url(forResource: "NXDrawKit", withExtension: "bundle") {
+                if let bundle = Bundle(url: bundleURL) {
+                    let image = UIImage(named: iconName!, in: bundle, compatibleWith: nil)
+                    button.setImage(image, for: UIControlState())
                 }
             }
         }
         
-        button.enabled = false
+        button.isEnabled = false
         
         return button
     }
     
-    private func multiflierForDevice() -> CGFloat {
-        if UIScreen.mainScreen().bounds.size.width <= 320 {
+    fileprivate func multiflierForDevice() -> CGFloat {
+        if UIScreen.main.bounds.size.width <= 320 {
             return 0.75
-        } else if UIScreen.mainScreen().bounds.size.width > 375 {
+        } else if UIScreen.main.bounds.size.width > 375 {
             return 1.0
         } else {
             return 0.9

@@ -27,14 +27,14 @@ class ViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    private func initialize() {
+    fileprivate func initialize() {
         self.setupCanvas()
         self.setupPalette()
         self.setupToolBar()
     }
     
-    private func setupPalette() {
-        self.view.backgroundColor = UIColor.whiteColor()
+    fileprivate func setupPalette() {
+        self.view.backgroundColor = UIColor.white
         
         let paletteView = Palette()
         paletteView.delegate = self
@@ -42,32 +42,32 @@ class ViewController: UIViewController
         self.view.addSubview(paletteView)
         self.paletteView = paletteView
         let paletteHeight = paletteView.paletteHeight()
-        paletteView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - paletteHeight, CGRectGetWidth(self.view.frame), paletteHeight)
+        paletteView.frame = CGRect(x: 0, y: self.view.frame.height - paletteHeight, width: self.view.frame.width, height: paletteHeight)
     }
     
-    private func setupToolBar() {
-        let height = CGRectGetHeight((self.paletteView?.frame)!) * 0.25
-        let startY = CGRectGetHeight(self.view.frame) - CGRectGetHeight((paletteView?.frame)!) - height
+    fileprivate func setupToolBar() {
+        let height = (self.paletteView?.frame)!.height * 0.25
+        let startY = self.view.frame.height - (paletteView?.frame)!.height - height
         let toolBar = ToolBar()
-        toolBar.frame = CGRectMake(0, startY, CGRectGetWidth(self.view.frame), height)
-        toolBar.undoButton?.addTarget(self, action: #selector(ViewController.onClickUndoButton), forControlEvents: .TouchUpInside)
-        toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), forControlEvents: .TouchUpInside)
-        toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), forControlEvents: .TouchUpInside)
-        toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), forControlEvents: .TouchUpInside)
+        toolBar.frame = CGRect(x: 0, y: startY, width: self.view.frame.width, height: height)
+        toolBar.undoButton?.addTarget(self, action: #selector(ViewController.onClickUndoButton), for: .touchUpInside)
+        toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), for: .touchUpInside)
+        toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), for: .touchUpInside)
+        toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), for: .touchUpInside)
         // default title is "Save"
-        toolBar.saveButton?.setTitle("share", forState: .Normal)
-        toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), forControlEvents: .TouchUpInside)
-        toolBar.loadButton?.enabled = true
+        toolBar.saveButton?.setTitle("share", for: UIControlState())
+        toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), for: .touchUpInside)
+        toolBar.loadButton?.isEnabled = true
         self.view.addSubview(toolBar)
         self.toolBar = toolBar
     }
     
-    private func setupCanvas() {
+    fileprivate func setupCanvas() {
 //        let canvasView = Canvas(backgroundImage: UIImage.init(named: "frame")!) // You can init with custom background image
         let canvasView = Canvas()
-        canvasView.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.width - 40)
+        canvasView.frame = CGRect(x: 20, y: 50, width: self.view.frame.size.width - 40, height: self.view.frame.size.width - 40)
         canvasView.delegate = self
-        canvasView.layer.borderColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 0.8).CGColor
+        canvasView.layer.borderColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 0.8).cgColor
         canvasView.layer.borderWidth = 2.0
         canvasView.layer.cornerRadius = 5.0
         canvasView.clipsToBounds = true
@@ -75,11 +75,11 @@ class ViewController: UIViewController
         self.canvasView = canvasView
     }
     
-    private func updateToolBarButtonStatus(canvas: Canvas) {
-        self.toolBar?.undoButton?.enabled = canvas.canUndo()
-        self.toolBar?.redoButton?.enabled = canvas.canRedo()
-        self.toolBar?.saveButton?.enabled = canvas.canSave()
-        self.toolBar?.clearButton?.enabled = canvas.canClear()
+    fileprivate func updateToolBarButtonStatus(_ canvas: Canvas) {
+        self.toolBar?.undoButton?.isEnabled = canvas.canUndo()
+        self.toolBar?.redoButton?.isEnabled = canvas.canRedo()
+        self.toolBar?.saveButton?.isEnabled = canvas.canSave()
+        self.toolBar?.clearButton?.isEnabled = canvas.canClear()
     }
     
     func onClickUndoButton() {
@@ -104,54 +104,54 @@ class ViewController: UIViewController
 
     
     // MARK: - Image and Photo selection
-    private func showActionSheetForPhotoSelection() {
+    fileprivate func showActionSheetForPhotoSelection() {
         let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Photo from Album", "Take a Photo")
-        actionSheet.showInView(self.view)
+        actionSheet.show(in: self.view)
     }
     
-    private func showPhotoLibrary () {
+    fileprivate func showPhotoLibrary () {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .PhotoLibrary
+        picker.sourceType = .photoLibrary
         picker.mediaTypes = [String(kUTTypeImage)]
         
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
     
-    private func showCamera() {
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+    fileprivate func showCamera() {
+        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         
         switch (status) {
-        case .NotDetermined:
+        case .notDetermined:
             self.presentImagePickerController()
             break
-        case .Restricted, .Denied:
+        case .restricted, .denied:
             self.showAlertForImagePickerPermission()
             break
-        case .Authorized:
+        case .authorized:
             self.presentImagePickerController()
             break
         }
     }
     
-    private func showAlertForImagePickerPermission() {
+    fileprivate func showAlertForImagePickerPermission() {
         let message = "If you want to use camera, you should allow app to use.\nPlease check your permission"
         let alert = UIAlertView(title: "", message: message, delegate: self, cancelButtonTitle: "No", otherButtonTitles: "Allow")
         alert.show()
     }
     
-    private func openSettings() {
-        let url = NSURL(string: UIApplicationOpenSettingsURLString)
-        UIApplication.sharedApplication().openURL(url!)
+    fileprivate func openSettings() {
+        let url = URL(string: UIApplicationOpenSettingsURLString)
+        UIApplication.shared.openURL(url!)
     }
     
-    private func presentImagePickerController() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+    fileprivate func presentImagePickerController() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let picker = UIImagePickerController()
             picker.delegate = self
-            picker.sourceType = .Camera
+            picker.sourceType = .camera
             picker.mediaTypes = [String(kUTTypeImage)]
-            self.presentViewController(picker, animated: true, completion: nil)
+            self.present(picker, animated: true, completion: nil)
         } else {
             let message = "This device doesn't support a camera"
             let alert = UIAlertView(title:"", message:message, delegate:nil, cancelButtonTitle:nil, otherButtonTitles:"Ok")
@@ -159,7 +159,7 @@ class ViewController: UIViewController
         }
     }
     
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafePointer<Void>)       {
+    func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer)       {
         if didFinishSavingWithError != nil {
             let message = "Saving failed"
             let alert = UIAlertView(title:"", message:message, delegate:nil, cancelButtonTitle:nil, otherButtonTitles:"Ok")
@@ -180,11 +180,11 @@ extension ViewController: CanvasDelegate
         return self.paletteView?.currentBrush()
     }
     
-    func canvas(canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?) {
+    func canvas(_ canvas: Canvas, didUpdateDrawing drawing: Drawing, mergedImage image: UIImage?) {
         self.updateToolBarButtonStatus(canvas)
     }
     
-    func canvas(canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
+    func canvas(_ canvas: Canvas, didSaveDrawing drawing: Drawing, mergedImage image: UIImage?) {
         // you can save merged image
 //        if let pngImage = image?.asPNGImage() {
 //            UIImageWriteToSavedPhotosAlbum(pngImage, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -200,7 +200,7 @@ extension ViewController: CanvasDelegate
         // you can share your image with UIActivityViewController
         if let pngImage = image?.asPNGImage() {
             let activityViewController = UIActivityViewController(activityItems: [pngImage], applicationActivities: nil)
-            self.presentViewController(activityViewController, animated: true, completion: nil)
+            self.present(activityViewController, animated: true, completion: nil)
         }
     }
 }
@@ -209,17 +209,17 @@ extension ViewController: CanvasDelegate
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+    func imagePickerController(_ picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         let selectedImage : UIImage = image
-        picker.dismissViewControllerAnimated(true, completion: { [weak self] in
-            let cropper = RSKImageCropViewController(image:selectedImage, cropMode:.Square)
+        picker.dismiss(animated: true, completion: { [weak self] in
+            let cropper = RSKImageCropViewController(image:selectedImage, cropMode:.square)
             cropper.delegate = self
-            self?.presentViewController(cropper, animated: true, completion: nil)
+            self?.present(cropper, animated: true, completion: nil)
         })
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -227,13 +227,13 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 // MARK: - RSKImageCropViewControllerDelegate
 extension ViewController: RSKImageCropViewControllerDelegate
 {
-    func imageCropViewControllerDidCancelCrop(controller: RSKImageCropViewController) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
-    func imageCropViewController(controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
+    func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
         self.canvasView?.update(croppedImage)
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -241,7 +241,7 @@ extension ViewController: RSKImageCropViewControllerDelegate
 // MARK: - UIActionSheetDelegate
 extension ViewController: UIActionSheetDelegate
 {
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         if (actionSheet.cancelButtonIndex == buttonIndex) {
             return
         }
@@ -258,7 +258,7 @@ extension ViewController: UIActionSheetDelegate
 // MARK: - UIAlertViewDelegate
 extension ViewController: UIAlertViewDelegate
 {
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if (alertView.cancelButtonIndex == buttonIndex) {
             return
         } else {
@@ -285,10 +285,10 @@ extension ViewController: PaletteDelegate
     
 
     // tag can be 1 ... 12
-    func colorWithTag(tag: NSInteger) -> UIColor? {
+    func colorWithTag(_ tag: NSInteger) -> UIColor? {
         if tag == 4 {
             // if you return clearColor, it will be eraser
-            return UIColor.clearColor()
+            return UIColor.clear
         }
         return nil
     }
