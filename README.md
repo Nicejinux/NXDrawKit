@@ -101,7 +101,7 @@ public class Brush: NSObject {
 ### - Public Methods
  - User can set background image.
  - User can ***undo***, ***redo*** or ***clear*** the `Canvas`. (**Maximum history size is 50**)
- - User can ***save*** current stroke and background internally, then `Canvas` calls ***didSavePaper:*** delegate
+ - User can ***save*** current stroke and background internally, then `Canvas` calls ***didSaveDrawing:*** delegate
 
 ```swift
 func update(backgroundImage: UIImage?)
