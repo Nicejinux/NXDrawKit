@@ -197,7 +197,7 @@ open class Palette: UIView
         self.brush.width = button.diameter!;
         self.resetButtonSelected(self.widthButtonList, button: button)
         
-        self.delegate?.didChangeBrushWidth?(self.brush.alpha)
+        self.delegate?.didChangeBrushWidth?(self.brush.width)
     }
     
     fileprivate func resetButtonSelected(_ list: [CircleButton], button: CircleButton) {
