@@ -14,7 +14,7 @@
 #### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.4.1** ⚠️ 
 #### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
 
-#Purpose
+# Purpose
 It's just started for my personal app for iPhone.
 Though, it can not be customized as much as you want, you can use [Smooth Freehand Drawing View](http://code.tutsplus.com/tutorials/ios-sdk_freehand-drawing--mobile-13164) easily.
 I made `Palette` and `ToolBar` for using `Canvas`, so **you don't have to use** `Palette` and `ToolBar`.
@@ -27,7 +27,7 @@ This framework consists of 3 kinds of views.
 
 
 
-#Screenshot
+# Screenshot
 <p align="center">
   <img src="images/screenShot.gif" border="black"/>
 </p>
@@ -61,8 +61,8 @@ github "nicejinux/NXDrawKit"
 1. Download and drop ```/NXDrawKit``` folder in your project.  
 2. Congratulations!  
 
-#Components
-##Canvas 
+# Components
+## Canvas 
 ### - Delegate
 `Canvas` will call the delegate when user draw or save image.  
 - Delegate provides user stroke image, background image and merged image. 
@@ -111,7 +111,7 @@ func clear()
 func save() 
 ```
 
-##Palette 
+## Palette 
  - `Palette` has 12 buttons for color, 3 buttons for alpha and 4 buttons for width of brush.
  - **You can** customize color, value of alpha and width of brush with delegate, 
  - **You can't** customize number of buttons.
@@ -156,7 +156,7 @@ func widthWithTag(tag: NSInteger) -> CGFloat
 func currentBrush() -> Brush
 ```
 
-##ToolBar
+## ToolBar
 ### - Public Properties
  - All buttons are set with default values without **#selector**.
  - If you want to use buttons on the `ToolBar`, you have to add **#selector** for each buttons.
@@ -168,7 +168,7 @@ var loadButton: UIButton?
 var clearButton: UIButton?
 ```
 
-##UIImage Extension
+## UIImage Extension
   - This extension can make you get **PNG** or **JPEG** format image directly for sharing or saving from what you draw.
   - All methods can return ***nil***, so you should check before use whether it's ***nil*** or not.
 ```swift
@@ -201,7 +201,7 @@ public extension UIImage {
 
 
 
-#Version History
+# Version History
 * 0.5.0
     * UPDATE: Support XCode8, Swift 3.0
 * 0.4.1
@@ -215,14 +215,14 @@ public extension UIImage {
 * 0.1.0
     * Release
 
-##Will be improved
+## Will be improved
 - [x] There is no Eraser, so user can't erase stroke. - added v0.2.0
 - [ ] User can't remove background image after it's set.
 - [ ] `Palette` and `ToolBar` can't customize easily.
 - [ ] All the code looks like ***ObjC***.
 
 
-#Author
+# Author
 This is [Jinwook Jeon](http://Nicejinux.NET). 
 I've been working as an iOS developer in Korea. 
 This is my first Swift project, so there can be lots of weird things in this framework.
@@ -234,7 +234,7 @@ Feel free to contact me.
  - homepage : http://Nicejinux.NET
 
 
-#MIT License
+# MIT License
 
 	Copyright (c) 2016 Jinwook Jeon. All rights reserved.
 
