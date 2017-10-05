@@ -9,16 +9,16 @@
 import UIKit
 
 open class Brush: NSObject {
-    open var color: UIColor = UIColor.black {
+    @objc open var color: UIColor = UIColor.black {
         willSet(colorValue) {
-            color = colorValue
+            self.color = colorValue
             isEraser = color.isEqual(UIColor.clear)
             blendMode = isEraser ? .clear : .normal
         }
     }
-    open var width: CGFloat = 5.0
-    open var alpha: CGFloat = 1.0
+    @objc open var width: CGFloat = 5.0
+    @objc open var alpha: CGFloat = 1.0
     
-    internal var blendMode: CGBlendMode = .normal
-    internal var isEraser: Bool = false
+    @objc internal var blendMode: CGBlendMode = .normal
+    @objc internal var isEraser: Bool = false
 }

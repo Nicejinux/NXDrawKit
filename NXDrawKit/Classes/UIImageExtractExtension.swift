@@ -9,15 +9,15 @@
 import UIKit
 
 public extension UIImage {
-    public func asPNGData() -> Data? {
+    @objc public func asPNGData() -> Data? {
         return UIImagePNGRepresentation(self)
     }
     
-    public func asJPEGData(_ quality: CGFloat) -> Data? {
+    @objc public func asJPEGData(_ quality: CGFloat) -> Data? {
         return UIImageJPEGRepresentation(self, quality);
     }
     
-    public func asPNGImage() -> UIImage? {
+    @objc public func asPNGImage() -> UIImage? {
         if let data = self.asPNGData() {
             return UIImage.init(data: data)
         }
@@ -25,7 +25,7 @@ public extension UIImage {
         return nil
     }
     
-    public func asJPGImage(_ quality: CGFloat) -> UIImage? {
+    @objc public func asJPGImage(_ quality: CGFloat) -> UIImage? {
         if let data = self.asJPEGData(quality) {
             return UIImage.init(data: data)
         }

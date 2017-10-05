@@ -10,11 +10,11 @@ import UIKit
 
 open class ToolBar: UIView
 {
-    open weak var undoButton: UIButton?
-    open weak var redoButton: UIButton?
-    open weak var saveButton: UIButton?
-    open weak var loadButton: UIButton?
-    open weak var clearButton: UIButton?
+    @objc open weak var undoButton: UIButton?
+    @objc open weak var redoButton: UIButton?
+    @objc open weak var saveButton: UIButton?
+    @objc open weak var loadButton: UIButton?
+    @objc open weak var clearButton: UIButton?
     
     fileprivate weak var lineView: UIView?
 

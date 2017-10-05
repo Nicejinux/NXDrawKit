@@ -82,6 +82,8 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     self = [super init];
     if (self) {
         _avoidEmptySpaceAroundImage = NO;
+        _alwaysBounceVertical = NO;
+        _alwaysBounceHorizontal = NO;
         _applyMaskToCroppedImage = NO;
         _maskLayerLineWidth = 1.0;
         _rotationEnabled = NO;
@@ -288,6 +290,8 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         _imageScrollView = [[RSKImageScrollView alloc] init];
         _imageScrollView.clipsToBounds = NO;
         _imageScrollView.aspectFill = self.avoidEmptySpaceAroundImage;
+        _imageScrollView.alwaysBounceHorizontal = self.alwaysBounceHorizontal;
+        _imageScrollView.alwaysBounceVertical = self.alwaysBounceVertical;
     }
     return _imageScrollView;
 }
@@ -447,6 +451,24 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         _avoidEmptySpaceAroundImage = avoidEmptySpaceAroundImage;
         
         self.imageScrollView.aspectFill = avoidEmptySpaceAroundImage;
+    }
+}
+
+- (void)setAlwaysBounceVertical:(BOOL)alwaysBounceVertical
+{
+    if (_alwaysBounceVertical != alwaysBounceVertical) {
+        _alwaysBounceVertical = alwaysBounceVertical;
+        
+        self.imageScrollView.alwaysBounceVertical = alwaysBounceVertical;
+    }
+}
+
+- (void)setAlwaysBounceHorizontal:(BOOL)alwaysBounceHorizontal
+{
+    if (_alwaysBounceHorizontal != alwaysBounceHorizontal) {
+        _alwaysBounceHorizontal = alwaysBounceHorizontal;
+        
+        self.imageScrollView.alwaysBounceHorizontal = alwaysBounceHorizontal;
     }
 }
 
@@ -926,11 +948,18 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     if ([self.delegate respondsToSelector:@selector(imageCropViewController:willCropImage:)]) {
         [self.delegate imageCropViewController:self willCropImage:self.originalImage];
     }
+    
+    UIImage *originalImage = self.originalImage;
+    RSKImageCropMode cropMode = self.cropMode;
+    CGRect cropRect = self.cropRect;
+    CGFloat rotationAngle = self.rotationAngle;
+    CGFloat zoomScale = self.imageScrollView.zoomScale;
+    UIBezierPath *maskPath = self.maskPath;
+    BOOL applyMaskToCroppedImage = self.applyMaskToCroppedImage;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        CGRect cropRect = self.cropRect;
-        CGFloat rotationAngle = self.rotationAngle;
         
-        UIImage *croppedImage = [self croppedImage:self.originalImage cropMode:self.cropMode cropRect:cropRect rotationAngle:rotationAngle zoomScale:self.imageScrollView.zoomScale maskPath:self.maskPath applyMaskToCroppedImage:self.applyMaskToCroppedImage];
+        UIImage *croppedImage = [self croppedImage:originalImage cropMode:cropMode cropRect:cropRect rotationAngle:rotationAngle zoomScale:zoomScale maskPath:maskPath applyMaskToCroppedImage:applyMaskToCroppedImage];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.delegate respondsToSelector:@selector(imageCropViewController:didCropImage:usingCropRect:rotationAngle:)]) {

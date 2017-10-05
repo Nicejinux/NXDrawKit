@@ -82,23 +82,23 @@ class ViewController: UIViewController
         self.toolBar?.clearButton?.isEnabled = canvas.canClear()
     }
     
-    func onClickUndoButton() {
+    @objc func onClickUndoButton() {
         self.canvasView?.undo()
     }
 
-    func onClickRedoButton() {
+    @objc func onClickRedoButton() {
         self.canvasView?.redo()
     }
 
-    func onClickLoadButton() {
+    @objc func onClickLoadButton() {
         self.showActionSheetForPhotoSelection()
     }
 
-    func onClickSaveButton() {
+    @objc func onClickSaveButton() {
         self.canvasView?.save()
     }
 
-    func onClickClearButton() {
+    @objc func onClickClearButton() {
         self.canvasView?.clear()
     }
 
@@ -119,7 +119,7 @@ class ViewController: UIViewController
     }
     
     fileprivate func showCamera() {
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
         
         switch (status) {
         case .notDetermined:
@@ -146,7 +146,7 @@ class ViewController: UIViewController
     }
     
     fileprivate func presentImagePickerController() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let picker = UIImagePickerController()
             picker.delegate = self
             picker.sourceType = .camera
@@ -200,6 +200,19 @@ extension ViewController: CanvasDelegate
         // you can share your image with UIActivityViewController
         if let pngImage = image?.asPNGImage() {
             let activityViewController = UIActivityViewController(activityItems: [pngImage], applicationActivities: nil)
+            activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                if !completed {
+                    // User canceled
+                    return
+                }
+
+                if activityType == UIActivityType.saveToCameraRoll {
+                    let alert = UIAlertController(title: nil, message: "Image is saved successfully", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
+            }
+            activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         }
     }
@@ -209,15 +222,23 @@ extension ViewController: CanvasDelegate
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-    func imagePickerController(_ picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
-        let selectedImage : UIImage = image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let type = info[UIImagePickerControllerMediaType]
+        if type as? String != String(kUTTypeImage) {
+            return
+        }
+        
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+
         picker.dismiss(animated: true, completion: { [weak self] in
             let cropper = RSKImageCropViewController(image:selectedImage, cropMode:.square)
             cropper.delegate = self
             self?.present(cropper, animated: true, completion: nil)
         })
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

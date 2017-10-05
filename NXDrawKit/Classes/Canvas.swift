@@ -19,7 +19,7 @@ import UIKit
 
 open class Canvas: UIView, UITableViewDelegate
 {
-    open weak var delegate: CanvasDelegate?
+    @objc open weak var delegate: CanvasDelegate?
     
     fileprivate var canvasId: String?
     
@@ -42,7 +42,7 @@ open class Canvas: UIView, UITableViewDelegate
         super.init(coder: aDecoder)
     }
     
-    public init(canvasId: String? = nil, backgroundImage image: UIImage? = nil) {
+    @objc public init(canvasId: String? = nil, backgroundImage image: UIImage? = nil) {
         super.init(frame: CGRect.zero)
         self.path.lineCapStyle = .round
         self.canvasId = canvasId
@@ -256,54 +256,54 @@ open class Canvas: UIView, UITableViewDelegate
     
     
     // MARK: - Public Methods
-    open func update(_ backgroundImage: UIImage?) {
+    @objc open func update(_ backgroundImage: UIImage?) {
         self.backgroundImageView.image = backgroundImage
         self.session.append(self.currentDrawing())
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
     
-    open func undo() {
+    @objc open func undo() {
         self.session.undo()
         self.updateByLastSession()
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
 
-    open func redo() {
+    @objc open func redo() {
         self.session.redo()
         self.updateByLastSession()
         self.saved = self.canSave()
         self.didUpdateCanvas()
     }
     
-    open func clear() {
+    @objc open func clear() {
         self.session.clear()
         self.updateByLastSession()
         self.saved = true
         self.didUpdateCanvas()
     }
     
-    open func save() {
+    @objc open func save() {
         self.drawing.stroke = self.mainImageView.image?.copy() as? UIImage
         self.drawing.background = self.backgroundImageView.image
         self.saved = true
         self.didSaveCanvas()
     }
     
-    open func canUndo() -> Bool {
+    @objc open func canUndo() -> Bool {
         return self.session.canUndo()
     }
 
-    open func canRedo() -> Bool {
+    @objc open func canRedo() -> Bool {
         return self.session.canRedo()
     }
 
-    open func canClear() -> Bool {
+    @objc open func canClear() -> Bool {
         return self.session.canReset()
     }
 
-    open func canSave() -> Bool {
+    @objc open func canSave() -> Bool {
         return !(self.isStrokeEqual() && self.isBackgroundEqual())
     }
 }

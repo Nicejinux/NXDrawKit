@@ -22,7 +22,7 @@ import UIKit
 
 open class Palette: UIView
 {
-    open weak var delegate: PaletteDelegate?
+    @objc open weak var delegate: PaletteDelegate?
     fileprivate var brush: Brush = Brush()
 
     fileprivate let buttonDiameter = UIScreen.main.bounds.width / 10.0
@@ -48,7 +48,7 @@ open class Palette: UIView
         super.init(coder: aDecoder)
     }
     
-    open func currentBrush() -> Brush {
+    @objc open func currentBrush() -> Brush {
         return self.brush
     }
     
@@ -59,15 +59,15 @@ open class Palette: UIView
         return size;
     }
     
-    open func setup() {
-        self.backgroundColor = UIColor(colorLiteralRed: 0.22, green: 0.22, blue: 0.21, alpha: 1.0)
+    @objc open func setup() {
+        self.backgroundColor = UIColor(red: 0.22, green: 0.22, blue: 0.21, alpha: 1.0)
         self.setupColorView()
         self.setupAlphaView()
         self.setupWidthView()
         self.setupDefaultValues()
     }
     
-    open func paletteHeight() -> CGFloat {
+    @objc open func paletteHeight() -> CGFloat {
         return self.totalHeight
     }
     

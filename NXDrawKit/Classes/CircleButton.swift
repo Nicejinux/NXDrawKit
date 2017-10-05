@@ -10,7 +10,7 @@ import UIKit
 
 class CircleButton: UIButton
 {
-    var color: UIColor!
+    @objc var color: UIColor!
     var opacity: CGFloat!
     var diameter: CGFloat!
     override var isSelected: Bool {
@@ -33,7 +33,7 @@ class CircleButton: UIButton
     }
     
     // MARK: - Public Methods
-    init(diameter: CGFloat, color: UIColor, opacity: CGFloat) {
+    @objc init(diameter: CGFloat, color: UIColor, opacity: CGFloat) {
         super.init(frame: CGRect.init(x: 0, y: 0, width: diameter, height: diameter))
         self.initialize(diameter, color: color, opacity: opacity)
     }
@@ -42,7 +42,7 @@ class CircleButton: UIButton
         super.init(coder: aDecoder)
     }
 
-    internal func update(_ color: UIColor) {
+    @objc internal func update(_ color: UIColor) {
         self.color = color
         self.isSelected = super.isSelected
         self.backgroundColor = color.withAlphaComponent(self.opacity!)

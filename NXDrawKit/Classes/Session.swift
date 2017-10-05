@@ -53,7 +53,7 @@ class Session: NSObject
     }
     
     // MARK: - Public Methods
-    func lastSession() -> Drawing? {
+    @objc func lastSession() -> Drawing? {
         if self.undoSessionList.last != nil {
             return self.undoSessionList.last
         } else if self.backgroundSession != nil {
@@ -63,18 +63,18 @@ class Session: NSObject
         return nil
     }
     
-    func appendBackground(_ session: Drawing?) {
+    @objc func appendBackground(_ session: Drawing?) {
         if session != nil {
             self.backgroundSession = session
         }
     }
     
-    func append(_ session: Drawing?) {
+    @objc func append(_ session: Drawing?) {
         self.appendUndo(session)
         self.resetRedo()
     }
     
-    func undo() {
+    @objc func undo() {
         let lastSession = self.undoSessionList.last
         if (lastSession != nil) {
             self.appendRedo(lastSession!)
@@ -82,7 +82,7 @@ class Session: NSObject
         }
     }
     
-    func redo() {
+    @objc func redo() {
         let lastSession = self.redoSessionList.last
         if (lastSession != nil) {
             self.appendUndo(lastSession!)
@@ -90,20 +90,20 @@ class Session: NSObject
         }
     }
     
-    func clear() {
+    @objc func clear() {
         self.resetUndo()
         self.resetRedo()
     }
     
-    func canUndo() -> Bool {
+    @objc func canUndo() -> Bool {
         return self.undoSessionList.count > 0
     }
 
-    func canRedo() -> Bool {
+    @objc func canRedo() -> Bool {
         return self.redoSessionList.count > 0
     }
     
-    func canReset() -> Bool {
+    @objc func canReset() -> Bool {
         return (self.canUndo() || self.canRedo())
     }
 }

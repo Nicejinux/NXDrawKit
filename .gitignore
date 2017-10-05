@@ -27,6 +27,9 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+## External Editors/IDE
+.idea
+
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
