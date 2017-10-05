@@ -130,7 +130,7 @@ func didChangeBrushWidth(width: CGFloat)
 
  - ***tag*** can be ***1 ... 12*** 
  - If you return ***nil***, the color of tag will set with default color provided by **NXDrawKit**.
- - If you return ***clearColor()***, the color of tag will be Eraser.
+ - If you return ***clearColor***, the color of tag will be Eraser.
 
 ```swift
 func colorWithTag(tag: NSInteger) -> UIColor?
