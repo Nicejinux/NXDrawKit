@@ -205,9 +205,11 @@ public extension UIImage {
 
 
 # Version History
-* 0.6.0
+* 0.7.1
+    * UPDATE: Support XCode10, Swift 4.2
+* 0.6.1
     * UPDATE: Support XCode9, Swift 4.0
-* 0.5.0
+* 0.5.1
     * UPDATE: Support XCode8, Swift 3.0
 * 0.4.1
     * UPDATE: Support XCode8, Swift 2.3
@@ -221,10 +223,10 @@ public extension UIImage {
     * Release
 
 ## Will be improved
+- [x] Swift style code
 - [x] There is no Eraser, so user can't erase stroke. - added v0.2.0
 - [ ] User can't remove background image after it's set.
 - [ ] `Palette` and `ToolBar` can't customize easily.
-- [ ] All the code looks like ***ObjC***.
 
 
 # Author
