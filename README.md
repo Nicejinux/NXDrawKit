@@ -8,9 +8,9 @@
 [![Version](https://img.shields.io/cocoapods/v/NXDrawKit.svg?style=flat)](http://cocoapods.org/pods/NXDrawKit)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](http://cocoapods.org/pods/NXDrawKit)
 [![Platform](https://img.shields.io/cocoapods/p/NXDrawKit.svg?style=flat)](http://cocoapods.org/pods/NXDrawKit)
-[![Swift](https://img.shields.io/badge/Swift-2.3-green.svg)](http://cocoapods.org/pods/NXDrawKit)
 [![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](http://cocoapods.org/pods/NXDrawKit)
 [![Swift](https://img.shields.io/badge/Swift-4.0-red.svg)](http://cocoapods.org/pods/NXDrawKit)
+[![Swift](https://img.shields.io/badge/Swift-4.2-green.svg)](http://cocoapods.org/pods/NXDrawKit)
 
 #### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.4.1** ⚠️ 
 #### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
