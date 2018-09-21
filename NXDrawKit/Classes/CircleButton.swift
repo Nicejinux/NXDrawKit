@@ -60,7 +60,7 @@ class CircleButton: UIButton
         self.backgroundColor = color.withAlphaComponent(opacity)
         
         if self.color.isEqual(UIColor.clear) {
-            self.setBackgroundImage(self.image("icon_eraser"), for: UIControlState())
+            self.setBackgroundImage(self.image("icon_eraser"), for: UIControl.State())
         }
     }
     

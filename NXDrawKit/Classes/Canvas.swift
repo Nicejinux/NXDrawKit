@@ -75,8 +75,8 @@ open class Canvas: UIView, UITableViewDelegate
             return false
         }
         
-        let data1 = UIImagePNGRepresentation(image1!)
-        let data2 = UIImagePNGRepresentation(image2!)
+        let data1 = image1!.pngData()
+        let data2 = image2!.pngData()
 
         if (data1 == nil || data2 == nil) {
             return false

@@ -1,6 +1,6 @@
 {
   "name": "NXDrawKit",
-  "version": "0.5.2",
+  "version": "0.7.1",
   "summary": "NXDrawKit is a simple and easy but useful drawing kit for iPhone",
   "description": "NXDrawKit is a set of classes designed to use drawable view easily.",
   "homepage": "https://github.com/nicejinux/NXDrawKit",
@@ -13,12 +13,13 @@
   },
   "source": {
     "git": "https://github.com/nicejinux/NXDrawKit.git",
-    "tag": "0.5.2"
+    "tag": "0.7.1"
   },
   "social_media_url": "https://twitter.com/nicejinux",
   "platforms": {
     "ios": "8.0"
   },
+  "swift_version": "4.0",
   "source_files": "NXDrawKit/Classes/*",
   "resource_bundles": {
     "NXDrawKit": [

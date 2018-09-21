@@ -10,11 +10,11 @@ import UIKit
 
 public extension UIImage {
     @objc public func asPNGData() -> Data? {
-        return UIImagePNGRepresentation(self)
+        return self.pngData()
     }
     
     @objc public func asJPEGData(_ quality: CGFloat) -> Data? {
-        return UIImageJPEGRepresentation(self, quality);
+        return self.jpegData(compressionQuality: quality);
     }
     
     @objc public func asPNGImage() -> UIImage? {

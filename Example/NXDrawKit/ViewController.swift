@@ -55,7 +55,7 @@ class ViewController: UIViewController
         toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), for: .touchUpInside)
         toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), for: .touchUpInside)
         // default title is "Save"
-        toolBar.saveButton?.setTitle("share", for: UIControlState())
+        toolBar.saveButton?.setTitle("share", for: UIControl.State())
         toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), for: .touchUpInside)
         toolBar.loadButton?.isEnabled = true
         self.view.addSubview(toolBar)
@@ -141,7 +141,7 @@ class ViewController: UIViewController
     }
     
     fileprivate func openSettings() {
-        let url = URL(string: UIApplicationOpenSettingsURLString)
+        let url = URL(string: UIApplication.openSettingsURLString)
         UIApplication.shared.openURL(url!)
     }
     
@@ -200,13 +200,13 @@ extension ViewController: CanvasDelegate
         // you can share your image with UIActivityViewController
         if let pngImage = image?.asPNGImage() {
             let activityViewController = UIActivityViewController(activityItems: [pngImage], applicationActivities: nil)
-            activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
                 if !completed {
                     // User canceled
                     return
                 }
 
-                if activityType == UIActivityType.saveToCameraRoll {
+                if activityType == UIActivity.ActivityType.saveToCameraRoll {
                     let alert = UIAlertController(title: nil, message: "Image is saved successfully", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true)
@@ -222,13 +222,13 @@ extension ViewController: CanvasDelegate
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let type = info[UIImagePickerControllerMediaType]
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let type = info[UIImagePickerController.InfoKey.mediaType]
         if type as? String != String(kUTTypeImage) {
             return
         }
         
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
 
@@ -248,12 +248,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 // MARK: - RSKImageCropViewControllerDelegate
 extension ViewController: RSKImageCropViewControllerDelegate
 {
-    func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
+    func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
+        self.canvasView?.update(croppedImage)
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
-        self.canvasView?.update(croppedImage)
+    func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

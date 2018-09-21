@@ -1,19 +1,23 @@
 PODS:
-  - NXDrawKit (0.5.2)
-  - RSKImageCropper (1.6.3)
+  - NXDrawKit (0.7.1)
+  - RSKImageCropper (2.2.0)
 
 DEPENDENCIES:
   - NXDrawKit (from `../`)
   - RSKImageCropper
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - RSKImageCropper
+
 EXTERNAL SOURCES:
   NXDrawKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  NXDrawKit: 7c23308fbc13e3ce946875be84f70c689f9d3c3e
-  RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
+  NXDrawKit: 48b4dc470afb55bcc71c8d4019c1f72dc53a37ab
+  RSKImageCropper: bd0bdf765b27c046c89728d65075b363a3b665c2
 
 PODFILE CHECKSUM: 73937c2fdc7afcc955dae9a477491722f5281a47
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.0

@@ -94,8 +94,8 @@ open class ToolBar: UIView
         
         if title != nil {
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15 * self.multiflierForDevice())
-            button.setTitle(title, for: UIControlState())
-            button.setTitleColor(UIColor.white, for: UIControlState())
+            button.setTitle(title, for: UIControl.State())
+            button.setTitleColor(UIColor.white, for: UIControl.State())
             button.setTitleColor(UIColor.gray, for: .disabled)
         }
 
@@ -104,7 +104,7 @@ open class ToolBar: UIView
             if let bundleURL = podBundle.url(forResource: "NXDrawKit", withExtension: "bundle") {
                 if let bundle = Bundle(url: bundleURL) {
                     let image = UIImage(named: iconName!, in: bundle, compatibleWith: nil)
-                    button.setImage(image, for: UIControlState())
+                    button.setImage(image, for: UIControl.State())
                 }
             }
         }
