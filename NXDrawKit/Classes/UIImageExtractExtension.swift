@@ -20,7 +20,7 @@ public extension UIImage {
     
     @objc public func asPNGImage() -> UIImage? {
         if let data = self.asPNGData() {
-            return UIImage.init(data: data)
+            return UIImage(data: data)
         }
         
         return nil
@@ -28,7 +28,7 @@ public extension UIImage {
     
     @objc public func asJPGImage(_ quality: CGFloat) -> UIImage? {
         if let data = self.asJPEGData(quality) {
-            return UIImage.init(data: data)
+            return UIImage(data: data)
         }
         
         return nil

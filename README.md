@@ -176,25 +176,25 @@ var clearButton: UIButton?
   - All methods can return ***nil***, so you should check before use whether it's ***nil*** or not.
 ```swift
 public extension UIImage {
-    public func asPNGData() -> NSData? {
-        return UIImagePNGRepresentation(self)
+    @objc public func asPNGData() -> Data? {
+        return self.pngData()
     }
     
-    public func asJPEGData(quality: CGFloat) -> NSData? {
-        return UIImageJPEGRepresentation(self, quality);
+    @objc public func asJPEGData(_ quality: CGFloat) -> Data? {
+        return self.jpegData(compressionQuality: quality);
     }
     
-    public func asPNGImage() -> UIImage? {
+    @objc public func asPNGImage() -> UIImage? {
         if let data = self.asPNGData() {
-            return UIImage.init(data: data)
+            return UIImage(data: data)
         }
         
         return nil
     }
-
-    public func asJPGImage(quality: CGFloat) -> UIImage? {
+    
+    @objc public func asJPGImage(_ quality: CGFloat) -> UIImage? {
         if let data = self.asJPEGData(quality) {
-            return UIImage.init(data: data)
+            return UIImage(data: data)
         }
         
         return nil
