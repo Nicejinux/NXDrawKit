@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 public extension UIImage {
     @objc public func asPNGData() -> Data? {
         return self.pngData()

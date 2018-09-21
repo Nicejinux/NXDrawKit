@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 open class Brush: NSObject {
     @objc open var color: UIColor = UIColor.black {
         willSet(colorValue) {

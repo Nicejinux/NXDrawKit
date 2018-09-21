@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 open class Drawing: NSObject {
     @objc open var stroke: UIImage?
     @objc open var background: UIImage?

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public extension UIView {
     /**
      Get Set x Position
@@ -15,7 +16,7 @@ public extension UIView {
      - parameter x: CGFloat
      by DaRk-_-D0G
      */
-    @objc internal var x:CGFloat {
+    @objc internal var x: CGFloat {
         get {
             return self.frame.origin.x
         }
@@ -30,7 +31,7 @@ public extension UIView {
      - parameter y: CGFloat
      by DaRk-_-D0G
      */
-    @objc internal var y:CGFloat {
+    @objc internal var y: CGFloat {
         get {
             return self.frame.origin.y
         }
@@ -44,7 +45,7 @@ public extension UIView {
      - parameter height: CGFloat
      by DaRk-_-D0G
      */
-    @objc internal var height:CGFloat {
+    @objc internal var height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -58,7 +59,7 @@ public extension UIView {
      - parameter width: CGFloat
      by DaRk-_-D0G
      */
-    @objc internal var width:CGFloat {
+    @objc internal var width: CGFloat {
         get {
             return self.frame.size.width
         }

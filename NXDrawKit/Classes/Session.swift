@@ -8,19 +8,15 @@
 
 import UIKit
 
-class Session: NSObject
-{
-    fileprivate let maxSessionSize = 50
-    fileprivate var undoSessionList = [Drawing]()
-    fileprivate var redoSessionList = [Drawing]()
-    fileprivate var backgroundSession: Drawing?
-    
-    override init() {
-        super.init()
-    }
+
+class Session: NSObject {
+    private let maxSessionSize = 50
+    private var undoSessionList = [Drawing]()
+    private var redoSessionList = [Drawing]()
+    private var backgroundSession: Drawing?
     
     // MARK: - Private Methods
-    fileprivate func appendUndo(_ session: Drawing?) {
+    private func appendUndo(_ session: Drawing?) {
         if session == nil {
             return
         }
@@ -32,7 +28,7 @@ class Session: NSObject
         self.undoSessionList.append(session!)
     }
     
-    fileprivate func appendRedo(_ session: Drawing?) {
+    private func appendRedo(_ session: Drawing?) {
         if session == nil {
             return
         }
@@ -44,13 +40,14 @@ class Session: NSObject
         self.redoSessionList.append(session!)
     }
     
-    fileprivate func resetUndo() {
+    private func resetUndo() {
         self.undoSessionList.removeAll()
     }
     
-    fileprivate func resetRedo() {
+    private func resetRedo() {
         self.redoSessionList.removeAll()
     }
+    
     
     // MARK: - Public Methods
     @objc func lastSession() -> Drawing? {

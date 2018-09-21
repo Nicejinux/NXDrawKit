@@ -12,11 +12,11 @@ import RSKImageCropper
 import AVFoundation
 import MobileCoreServices
 
-class ViewController: UIViewController
-{
+class ViewController: UIViewController {
     weak var canvasView: Canvas?
     weak var paletteView: Palette?
     weak var toolBar: ToolBar?
+    weak var bottomView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +27,44 @@ class ViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    fileprivate func initialize() {
+    private func initialize() {
         self.setupCanvas()
         self.setupPalette()
         self.setupToolBar()
     }
     
-    fileprivate func setupPalette() {
+    override func viewWillLayoutSubviews() {
+        let topMargin = UIApplication.shared.topSafeAreaMargin() + 50
+        let leftMargin = UIApplication.shared.leftSafeAreaMargin() + 20
+        let rightMargin = UIApplication.shared.rightSafeAreaMargin() + 20
+        let bottomMargin = UIApplication.shared.bottomSafeAreaMargin()
+        let width = view.frame.width
+        let height = view.frame.height
+
+        self.canvasView?.frame = CGRect(x: leftMargin,
+                                        y: topMargin,
+                                        width: width - (leftMargin + rightMargin),
+                                        height: width - (leftMargin + rightMargin))
+
+        guard let paletteView = self.paletteView else {
+            return
+        }
+
+        let paletteHeight = paletteView.paletteHeight()
+        paletteView.frame = CGRect(x: 0,
+                                   y: height - (paletteHeight + bottomMargin),
+                                   width: width,
+                                   height: paletteHeight)
+
+        
+        let toolBarHeight = paletteHeight * 0.25
+        let startY = paletteView.frame.minY - toolBarHeight
+        self.toolBar?.frame = CGRect(x: 0, y: startY, width: width, height: toolBarHeight)
+        
+        self.bottomView?.frame = CGRect(x: 0, y: paletteView.frame.maxY, width: width, height: bottomMargin)
+    }
+    
+    private func setupPalette() {
         self.view.backgroundColor = UIColor.white
         
         let paletteView = Palette()
@@ -41,31 +72,28 @@ class ViewController: UIViewController
         paletteView.setup()
         self.view.addSubview(paletteView)
         self.paletteView = paletteView
-        let paletteHeight = paletteView.paletteHeight()
-        paletteView.frame = CGRect(x: 0, y: self.view.frame.height - paletteHeight, width: self.view.frame.width, height: paletteHeight)
+        
+        let bottomView = UIView()
+        bottomView.backgroundColor = UIColor(red: 0.22, green: 0.22, blue: 0.21, alpha: 1.0)
+        self.view.addSubview(bottomView)
+        self.bottomView = bottomView
     }
     
-    fileprivate func setupToolBar() {
-        let height = (self.paletteView?.frame)!.height * 0.25
-        let startY = self.view.frame.height - (paletteView?.frame)!.height - height
+    private func setupToolBar() {
         let toolBar = ToolBar()
-        toolBar.frame = CGRect(x: 0, y: startY, width: self.view.frame.width, height: height)
         toolBar.undoButton?.addTarget(self, action: #selector(ViewController.onClickUndoButton), for: .touchUpInside)
         toolBar.redoButton?.addTarget(self, action: #selector(ViewController.onClickRedoButton), for: .touchUpInside)
         toolBar.loadButton?.addTarget(self, action: #selector(ViewController.onClickLoadButton), for: .touchUpInside)
         toolBar.saveButton?.addTarget(self, action: #selector(ViewController.onClickSaveButton), for: .touchUpInside)
-        // default title is "Save"
-        toolBar.saveButton?.setTitle("share", for: UIControl.State())
+        toolBar.saveButton?.setTitle("share", for: UIControl.State())   // default title is "Save"
         toolBar.clearButton?.addTarget(self, action: #selector(ViewController.onClickClearButton), for: .touchUpInside)
         toolBar.loadButton?.isEnabled = true
         self.view.addSubview(toolBar)
         self.toolBar = toolBar
     }
     
-    fileprivate func setupCanvas() {
-//        let canvasView = Canvas(backgroundImage: UIImage.init(named: "frame")!) // You can init with custom background image
+    private func setupCanvas() {
         let canvasView = Canvas()
-        canvasView.frame = CGRect(x: 20, y: 50, width: self.view.frame.size.width - 40, height: self.view.frame.size.width - 40)
         canvasView.delegate = self
         canvasView.layer.borderColor = UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 0.8).cgColor
         canvasView.layer.borderWidth = 2.0
@@ -75,7 +103,7 @@ class ViewController: UIViewController
         self.canvasView = canvasView
     }
     
-    fileprivate func updateToolBarButtonStatus(_ canvas: Canvas) {
+    private func updateToolBarButtonStatus(_ canvas: Canvas) {
         self.toolBar?.undoButton?.isEnabled = canvas.canUndo()
         self.toolBar?.redoButton?.isEnabled = canvas.canRedo()
         self.toolBar?.saveButton?.isEnabled = canvas.canSave()
@@ -104,12 +132,12 @@ class ViewController: UIViewController
 
     
     // MARK: - Image and Photo selection
-    fileprivate func showActionSheetForPhotoSelection() {
+    private func showActionSheetForPhotoSelection() {
         let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Photo from Album", "Take a Photo")
         actionSheet.show(in: self.view)
     }
     
-    fileprivate func showPhotoLibrary () {
+    private func showPhotoLibrary () {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
@@ -118,7 +146,7 @@ class ViewController: UIViewController
         self.present(picker, animated: true, completion: nil)
     }
     
-    fileprivate func showCamera() {
+    private func showCamera() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         
         switch (status) {
@@ -134,18 +162,18 @@ class ViewController: UIViewController
         }
     }
     
-    fileprivate func showAlertForImagePickerPermission() {
+    private func showAlertForImagePickerPermission() {
         let message = "If you want to use camera, you should allow app to use.\nPlease check your permission"
         let alert = UIAlertView(title: "", message: message, delegate: self, cancelButtonTitle: "No", otherButtonTitles: "Allow")
         alert.show()
     }
     
-    fileprivate func openSettings() {
+    private func openSettings() {
         let url = URL(string: UIApplication.openSettingsURLString)
         UIApplication.shared.openURL(url!)
     }
     
-    fileprivate func presentImagePickerController() {
+    private func presentImagePickerController() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let picker = UIImagePickerController()
             picker.delegate = self
@@ -174,8 +202,7 @@ class ViewController: UIViewController
 
 
 // MARK: - CanvasDelegate
-extension ViewController: CanvasDelegate
-{
+extension ViewController: CanvasDelegate {
     func brush() -> Brush? {
         return self.paletteView?.currentBrush()
     }
@@ -220,9 +247,8 @@ extension ViewController: CanvasDelegate
 
 
 // MARK: - UIImagePickerControllerDelegate
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
-{
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let type = info[UIImagePickerController.InfoKey.mediaType]
         if type as? String != String(kUTTypeImage) {
             return
@@ -246,8 +272,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 
 // MARK: - RSKImageCropViewControllerDelegate
-extension ViewController: RSKImageCropViewControllerDelegate
-{
+extension ViewController: RSKImageCropViewControllerDelegate {
     func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
         self.canvasView?.update(croppedImage)
         controller.dismiss(animated: true, completion: nil)
@@ -260,8 +285,7 @@ extension ViewController: RSKImageCropViewControllerDelegate
 
 
 // MARK: - UIActionSheetDelegate
-extension ViewController: UIActionSheetDelegate
-{
+extension ViewController: UIActionSheetDelegate {
     func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         if (actionSheet.cancelButtonIndex == buttonIndex) {
             return
@@ -277,8 +301,7 @@ extension ViewController: UIActionSheetDelegate
 
 
 // MARK: - UIAlertViewDelegate
-extension ViewController: UIAlertViewDelegate
-{
+extension ViewController: UIAlertViewDelegate {
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if (alertView.cancelButtonIndex == buttonIndex) {
             return
@@ -290,8 +313,7 @@ extension ViewController: UIAlertViewDelegate
 
 
 // MARK: - PaletteDelegate
-extension ViewController: PaletteDelegate
-{
+extension ViewController: PaletteDelegate {
 //    func didChangeBrushColor(color: UIColor) {
 //
 //    }
@@ -326,6 +348,50 @@ extension ViewController: PaletteDelegate
 //    func alphaWithTag(tag: NSInteger) -> CGFloat {
 //        return -1
 //    }
+}
+
+
+// MARK: - SafeArea Extension
+extension UIApplication {
+    public func topSafeAreaMargin() -> CGFloat {
+        var topMargin: CGFloat = 0
+        if #available(iOS 11.0, *), let topInset = keyWindow?.safeAreaInsets.top {
+            topMargin = topInset
+        }
+        
+        return topMargin
+    }
+    
+    public func bottomSafeAreaMargin() -> CGFloat {
+        var bottomMargin: CGFloat = 0
+        if #available(iOS 11.0, *), let bottomInset = keyWindow?.safeAreaInsets.bottom {
+            bottomMargin = bottomInset
+        }
+        
+        return bottomMargin
+    }
+    
+    public func leftSafeAreaMargin() -> CGFloat {
+        var leftMargin: CGFloat = 0
+        if #available(iOS 11.0, *), let leftInset = keyWindow?.safeAreaInsets.left {
+            leftMargin = leftInset
+        }
+        
+        return leftMargin
+    }
+    
+    public func rightSafeAreaMargin() -> CGFloat {
+        var rightMargin: CGFloat = 0
+        if #available(iOS 11.0, *), let rightInset = keyWindow?.safeAreaInsets.right {
+            rightMargin = rightInset
+        }
+        
+        return rightMargin
+    }
+    
+    public func safeAreaSideMargin() -> CGFloat {
+        return leftSafeAreaMargin() + rightSafeAreaMargin()
+    }
 }
 
 

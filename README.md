@@ -15,6 +15,7 @@
 #### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.4.1** ⚠️ 
 #### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
 #### ⚠️ **To use with Swift 4.x please ensure you are using >= 0.6.1** ⚠️ 
+#### ⚠️ **To use with Swift 4.2 please ensure you are using >= 0.7.1** ⚠️ 
 
 # Purpose
 It's just started for my personal app for iPhone.
