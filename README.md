@@ -16,6 +16,7 @@
 #### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
 #### ⚠️ **To use with Swift 4.x please ensure you are using >= 0.6.1** ⚠️ 
 #### ⚠️ **To use with Swift 4.2 please ensure you are using >= 0.7.1** ⚠️ 
+#### ⚠️ **To use with Swift 5.0 please ensure you are using >= 0.8.0** ⚠️ 
 
 # Purpose
 It's just started for my personal app for iPhone.
@@ -205,14 +206,16 @@ public extension UIImage {
 
 
 # Version History
+* 0.8.0
+    * UPDATE: Support Xcode10, Swift 5.0
 * 0.7.1
-    * UPDATE: Support XCode10, Swift 4.2
+    * UPDATE: Support Xcode10, Swift 4.2
 * 0.6.1
-    * UPDATE: Support XCode9, Swift 4.0
+    * UPDATE: Support Xcode9, Swift 4.0
 * 0.5.1
-    * UPDATE: Support XCode8, Swift 3.0
+    * UPDATE: Support Xcode8, Swift 3.0
 * 0.4.1
-    * UPDATE: Support XCode8, Swift 2.3
+    * UPDATE: Support Xcode8, Swift 2.3
 * 0.3.4
     * FIX: Removing background image issue 
 * 0.3.0
