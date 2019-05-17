@@ -150,15 +150,14 @@ class ViewController: UIViewController {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         
         switch (status) {
-        case .notDetermined:
-            self.presentImagePickerController()
-            break
-        case .restricted, .denied:
-            self.showAlertForImagePickerPermission()
-            break
-        case .authorized:
-            self.presentImagePickerController()
-            break
+            case .notDetermined:
+                self.presentImagePickerController()
+            case .restricted, .denied:
+                self.showAlertForImagePickerPermission()
+            case .authorized:
+                self.presentImagePickerController()
+            default:
+                return
         }
     }
     

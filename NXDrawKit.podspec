@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NXDrawKit'
-  s.version          = '0.7.1'
+  s.version          = '0.8.0'
   s.summary          = 'NXDrawKit is a simple and easy but useful drawing kit for iPhone'
   s.description      = 'NXDrawKit is a set of classes designed to use drawable view easily.'
 
@@ -20,16 +20,11 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/nicejinux'
 
   s.ios.deployment_target = '8.0'
-  
-  s.swift_version = '4.2'
-  
+  s.swift_version = '5.0'
   s.source_files = 'NXDrawKit/Classes/*'
-  
   s.resource_bundles = {
     'NXDrawKit' => ['NXDrawKit/Assets/*']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.dependency 'SnapKit', '= 0.22.0'
   s.frameworks = 'UIKit'
 end
