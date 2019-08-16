@@ -22,8 +22,5 @@ let package = Package(
             name: "NXDrawKit",
             dependencies: [],
 	    path: "NXDrawKit/Classes/"),
-        .testTarget(
-            name: "NXDrawKitTests",
-            dependencies: ["NXDrawKit"]),
     ]
 )
