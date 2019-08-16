@@ -74,7 +74,12 @@ open class Canvas: UIView, UITableViewDelegate {
         self.saved = false
         self.pointMoved = false
         self.pointIndex = 0
-        self.brush = (self.delegate?.brush())!
+        self.brush = self.delegate?.brush() ?? ({
+            let brush =  Brush()
+            brush.color = .black
+            brush.width = 1
+            return brush
+        }())
         
         let touch = touches.first!
         self.points[0] = touch.location(in: self)
