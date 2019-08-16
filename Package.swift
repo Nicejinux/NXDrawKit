@@ -1,5 +1,7 @@
 import PackageDescription
 
+// swift-tools-version:4.0
+
 let package = Package(
     name: "NXDrawKit",
     products: [
