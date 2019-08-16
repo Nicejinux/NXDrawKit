@@ -68,18 +68,18 @@ open class Canvas: UIView, UITableViewDelegate {
         self.tempImageView.autoresizingMask = [.flexibleHeight ,.flexibleWidth]
     }
     
-
+    private func defaultBrush() -> Brush {
+        let brush =  Brush()
+        brush.color = .black
+        brush.width = 1
+        return brush
+    }
     // MARK: - Override Methods
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.saved = false
         self.pointMoved = false
         self.pointIndex = 0
-        self.brush = self.delegate?.brush() ?? ({
-            let brush =  Brush()
-            brush.color = .black
-            brush.width = 1
-            return brush
-        }())
+        self.brush = self.delegate?.brush() ?? defaultBrush()
         
         let touch = touches.first
         self.points[0] = touch?.location(in: self)
