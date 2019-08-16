@@ -35,7 +35,7 @@ open class Canvas: UIView, UITableViewDelegate {
     private var saved = false
     private var pointMoved = false
     private var pointIndex = 0
-    private var points = [CGPoint?](repeating: CGPoint.zero, count: 5)
+    private var points = [CGPoint](repeating: CGPoint.zero, count: 5)
     
     
     // MARK: - Initializers
@@ -82,7 +82,7 @@ open class Canvas: UIView, UITableViewDelegate {
         self.brush = self.delegate?.brush() ?? defaultBrush()
         
         let touch = touches.first
-        self.points[0] = touch?.location(in: self)
+        self.points[0] = touch?.location(in: self) ?? CGPoint.zero
     }
     
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -96,16 +96,16 @@ open class Canvas: UIView, UITableViewDelegate {
         let currentPoint = touch?.location(in: self)
         self.pointMoved = true
         self.pointIndex += 1
-        self.points[self.pointIndex] = currentPoint
+        self.points[self.pointIndex] = currentPoint ?? CGPoint.zero
         
         if self.pointIndex == 4 {
             // move the endpoint to the middle of the line joining the second control point of the first Bezier segment
             // and the first control point of the second Bezier segment
-            self.points[3] = CGPoint(x: (self.points[2]!.x + self.points[4]!.x)/2.0, y: (self.points[2]!.y + self.points[4]!.y) / 2.0)
+            self.points[3] = CGPoint(x: (self.points[2].x + self.points[4].x)/2.0, y: (self.points[2].y + self.points[4].y) / 2.0)
 
             // add a cubic Bezier from pt[0] to pt[3], with control points pt[1] and pt[2]
-            self.path.move(to: self.points[0]!)
-            self.path.addCurve(to: self.points[3]!, controlPoint1: self.points[1]!, controlPoint2: self.points[2]!)
+            self.path.move(to: self.points[0])
+            self.path.addCurve(to: self.points[3], controlPoint1: self.points[1], controlPoint2: self.points[2])
             
             // replace points and get ready to handle the next segment
             self.points[0] = self.points[3]
@@ -122,8 +122,8 @@ open class Canvas: UIView, UITableViewDelegate {
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !self.pointMoved {   // touchesBegan -> touchesEnded : just touched
-            self.path.move(to: self.points[0]!)
-            self.path.addLine(to: self.points[0]!)
+            self.path.move(to: self.points[0])
+            self.path.addLine(to: self.points[0])
             self.strokePath()
         }
         
