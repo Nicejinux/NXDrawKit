@@ -81,8 +81,8 @@ open class Canvas: UIView, UITableViewDelegate {
             return brush
         }())
         
-        let touch = touches.first!
-        self.points[0] = touch.location(in: self)
+        let touch = touches.first
+        self.points[0] = touch?.location(in: self)
     }
     
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,8 +92,8 @@ open class Canvas: UIView, UITableViewDelegate {
          *
          */
 
-        let touch = touches.first!
-        let currentPoint = touch.location(in: self)
+        let touch = touches.first
+        let currentPoint = touch?.location(in: self)
         self.pointMoved = true
         self.pointIndex += 1
         self.points[self.pointIndex] = currentPoint
