@@ -21,6 +21,6 @@ let package = Package(
         .target(
             name: "NXDrawKit",
             dependencies: [],
-	    path: "NXDrawKit/Classes/"),
+	    path: "NXDrawKit/"),
     ]
 )
