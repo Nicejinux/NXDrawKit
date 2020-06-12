@@ -43,7 +43,7 @@ This framework consists of 3 kinds of views.
 You can use [Accio](https://github.com/JamitLabs/Accio) or [Swift Package Manager](https://github.com/apple/swift-package-manager) to install `NXDrawKit` by adding it to your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/niklasarnitz/NXDrawKit.git", .branch("master"));
+.package(url: "https://github.com/Nicejinux/NXDrawKit", .branch("master"));
 ```
 
 ## CocoaPods
