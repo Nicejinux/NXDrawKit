@@ -206,6 +206,8 @@ public extension UIImage {
 
 
 # Version History
+* 0.8.1
+    * FIX: SPM issue
 * 0.8.0
     * UPDATE: Support Xcode10, Swift 5.0
 * 0.7.1
