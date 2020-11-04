@@ -8,16 +8,15 @@
 [![Version](https://img.shields.io/cocoapods/v/NXDrawKit.svg?style=flat)](http://cocoapods.org/pods/NXDrawKit)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](http://cocoapods.org/pods/NXDrawKit)
 [![Platform](https://img.shields.io/cocoapods/p/NXDrawKit.svg?style=flat)](http://cocoapods.org/pods/NXDrawKit)
-[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](http://cocoapods.org/pods/NXDrawKit)
-[![Swift](https://img.shields.io/badge/Swift-4.0-red.svg)](http://cocoapods.org/pods/NXDrawKit)
-[![Swift](https://img.shields.io/badge/Swift-4.2-green.svg)](http://cocoapods.org/pods/NXDrawKit)
+[![Swift](https://img.shields.io/badge/Swift-5.0-green.svg)](http://cocoapods.org/pods/NXDrawKit)
 
-#### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.4.1** ⚠️ 
-#### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
-#### ⚠️ **To use with Swift 4.x please ensure you are using >= 0.6.1** ⚠️ 
-#### ⚠️ **To use with Swift 4.2 please ensure you are using >= 0.7.1** ⚠️ 
 #### ⚠️ **To use with Swift 5.0 please ensure you are using >= 0.8.0** ⚠️ 
-
+#### ⚠️ **To use with Swift 4.2 please ensure you are using >= 0.7.1** ⚠️ 
+#### ⚠️ **To use with Swift 4.x please ensure you are using >= 0.6.1** ⚠️ 
+#### ⚠️ **To use with Swift 3.x please ensure you are using >= 0.5.0** ⚠️ 
+#### ⚠️ **To use with Swift 2.3 please ensure you are using == 0.4.1** ⚠️ 
+  
+  
 # Purpose
 It's just started for my personal app for iPhone.
 Though, it can not be customized as much as you want, you can use [Smooth Freehand Drawing View](http://code.tutsplus.com/tutorials/ios-sdk_freehand-drawing--mobile-13164) easily.
@@ -39,6 +38,13 @@ This framework consists of 3 kinds of views.
 
 
 # Installation
+
+## Accio/SwiftPM
+You can use [Accio](https://github.com/JamitLabs/Accio) or [Swift Package Manager](https://github.com/apple/swift-package-manager) to install `NXDrawKit` by adding it to your `Package.swift` file:
+
+```swift
+.package(url: "https://github.com/Nicejinux/NXDrawKit", .branch("master"));
+```
 
 ## CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `NXDrawKit` by adding it to your `Podfile`:
